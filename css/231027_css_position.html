@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position</title>
+    <style>
+        body{
+            margin: 0;
+            background-color: orange;
+            height: 2000px;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            font-weight: 700;
+            text-align: center;
+            line-height: 100px;
+        }
+        /* static */
+        /* 
+        - 기본값이기 때문에 따로 작성 X 
+        - inline 요소는 왼쪽 -> 오른쪽으로 쌓임
+        - block 요소는 위 -> 아래로 쌓임     
+        */
+        .position-static{
+            position: static;
+            background-color: pink;
+        }
+
+        /* relative */
+        /* 일반적인 흐름에 따라 배치(static), top/bottom/right/left 값을 하나 이상 작성 */
+        /* 자신이 원래 있어야 하는 위치 기준 
+            - top : 위로부터의 여백 
+            - bottom : 아래로부터의 여백
+            - right : 오른쪽으로부터의 여백
+            - left : 왼쪽으로 부터의 여백 
+        */
+        .position-relative{
+            position: relative;
+            background-color: aquamarine;
+            top: 50px;
+            left: 100px;
+        }
+        /* absolute */
+        /* 
+        기준점 : static이 아닌 값을 갖는 제일 가까운 조상 기준
+        -> 없다면? -> 뷰표트 기준으로 배치
+        */
+        .position-absolute{
+            background-color: blueviolet;
+            position: absolute;
+            left: 100px;
+        }
+
+        /* fixed */
+        /* 
+        - viewport(화면에 보이는 것) 기준으로 특정 위치에 배치
+        - 스크롤을 할 경우 계속 보인다 -> header 만들 때 많이 이용
+        - top, bottom, left, right 가
+        */
+        .position-fixed{
+            background-color: red;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="position-static">static</div>
+    <div class="position-relative">relative</div>
+    <div class="position-absolute">absolute</div>
+    <div style="position:relative; background-color: aqua;">
+        <div>absolute test</div>
+        <div class="position-absolute"></div>
+    </div>
+    <div class="position-fixed">fixed</div>
+</body>
+</html>
