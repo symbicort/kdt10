@@ -11,12 +11,21 @@
             height: 300px;
             display: flex;
             /* flex-direction */
-            flex-direction: row;
-            flex-direction: row-reverse;
+            /* flex-direction: row; */
+            /* flex-direction: row-reverse;
             flex-direction: column;
-            flex-direction: column-reverse;
+            flex-direction: column-reverse; */
+
+            flex-wrap: wrap;
+
+            /* justify-content: flex-start; */
+            /* justify-content: flex-end; */
+            /* justify-content: center; */
+            /* justify-content: space-between;
+            justify-content: space-around;
+            justify-content: space-evenly; */
         }
-        .container > div{
+        div{
             width: 100px;
             height: 100px;
         }
@@ -26,16 +35,51 @@
         .item2{
             background-color: yellow;
         }
+
+        .item3{
+            /* width: 100px;
+            height: 200px; */
+            background-color: beige;
+        }
+        .item4{
+            /* width: 200px;
+            height: 150px; */
+            background-color: aqua;
+        }
+        .item5{
+            /* width: 300px;
+            height: 40px; */
+            background-color: coral;
+        }
+        .align-items{
+            align-items: flex-start;
+            /* align-items: flex-end; */
+            /* align-items: center; */
+        
+            /* align-content */
+            align-content: flex-start;
+            align-content: flex-end;
+            align-content: center;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="item1"></div>
-        <div class="item2"></div>
-        <div class="item1"></div>
-        <div class="item2"></div>
-        <div class="item1"></div>
-        <div class="item2"></div>
+        <div class="item1">1</div>
+        <div class="item2">2</div>
+        <div class="item1">3</div>
+        <div class="item2">4</div>
+        <div class="item1">5</div>
+        <div class="item2">6</div>
+    </div>
+    <hr>
+    <div class="container align-items" >
+        <div class="item3"></div>
+        <div class="item4"></div>
+        <div class="item5"></div>
+        <div class="item3"></div>
+        <div class="item4"></div>
+        <div class="item5"></div>
     </div>
 </body>
 </html>
