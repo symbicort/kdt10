@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice display flex</title>
+    <style>
+        .container{
+            width: 500px;
+            height: 500px;
+            display: flex;
+            background-color: rgb(244, 178, 56);
+            
+        }
+        .container1{
+            width: 500px;
+            height: 500px;
+            display: flex;
+            background-color: rgb(244, 178, 56);
+            flex-direction: row-reverse;
+            margin-top: 20px;
+        }
+        .container2{
+            width: 500px;
+            height: 500px;
+            display: flex;
+            background-color: rgb(244, 178, 56);
+            flex-direction: column;
+            margin-top: 20px;
+        }
+        .container > div{
+            width: 100px;
+            height: 100px;
+        }
+        .container1 > div{
+            width: 100px;
+            height: 100px;
+        }
+        .container2 > div{
+            width: 100px;
+            height: 100px;
+        }
+        .box{
+            background-color: aliceblue;
+        }
+        .box2{
+            background-color: aquamarine;
+        }
+        .box3{
+            background-color: beige;
+        }
+        .box-1{
+            background-color: aliceblue;
+        }
+        .box2-1{
+            background-color: aquamarine;
+        }
+        .box3-1{
+            background-color: beige;
+        }
+        .box-2{
+            background-color: aliceblue;
+        }
+        .box2-2{
+            background-color: aquamarine;
+        }
+        .box3-2{
+            background-color: beige;
+        }
+        .container4{
+            width: 500px;
+            height: 500px;
+            display: flex;
+            background-color: blanchedalmond;
+            border: 2px solid;
+            margin-top: 30px;
+        }
+        .container4 > div{
+            width: 100px;
+            height: 100px;
+            background-color: beige;
+            border: 1px solid;
+        }
+        .container5{
+            width: 500px;
+            height: 500px;
+            display: flex;
+            background-color: blanchedalmond;
+            border: 2px solid;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .container5 > div{
+            width: 100px;
+            height: 100px;
+            background-color: beige;
+            border: 1px solid;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+    </div>
+
+    <div class="container1">
+        <div class="box-1"></div>
+        <div class="box2-1"></div>
+        <div class="box3-1"></div>
+    </div>
+
+    <div class="container2">
+        <div class="box-2"></div>
+        <div class="box2-2"></div>
+        <div class="box3-2"></div>
+    </div>
+    
+    <div class="container4">
+        <div class="box-a"></div>
+        <div class="box-b"></div>
+        <div class="box-c"></div>
+        <div class="box-d"></div>
+        <div class="box-e"></div>
+        <div class="box-f"></div>
+        <div class="box-g"></div>
+        <div class="box-h"></div>
+        
+    </div>
+
+    <div class="container5">
+        <div class="box-a"></div>
+        <div class="box-b"></div>
+        <div class="box-c"></div>
+        <div class="box-d"></div>
+        <div class="box-e"></div>
+        <div class="box-f"></div>
+        <div class="box-g"></div>
+        <div class="box-h"></div>    
+    </div>
+
+</body>
+</html>

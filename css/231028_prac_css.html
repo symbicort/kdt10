@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            height: 500px;
+            width: 500px;
+            border-style: solid;
+            border-width: 6px;
+            position: relative;
+        }
+        .item{
+            background-color: red;
+            height: 100px;
+            width: 100px;
+        }
+        .item1{
+            position: relative;
+            left: 50px;
+            top: 30px;
+            background-color: orange;
+            height: 100px;
+            width: 100px;
+        }
+        .item2{
+            position: absolute;
+            height: 100px;
+            width: 100px;
+            right: 30px;
+            bottom: 100px;
+            background-color: yellow;
+        }
+        .item3{
+            position: fixed;
+            right: 100px;
+            top: 100px;
+            background-color: green;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item item"></div>
+        <div class="item item1"></div>
+        <div class="item item2"></div>
+        <div class="item item3"></div>
+    </div>
+</body>
+</html>
