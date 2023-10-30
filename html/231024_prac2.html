@@ -4,27 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .radio{
+            border: 10px;
+            color: black;
+            box-sizing: content-box;
+            width: 400px;
+            height: 24px;
+            padding: 10px;
+            background-color: skyblue;
+            border: 3px;
+            border-style: dashed;
+            border-radius: 10%;
+        }
+        .placeholder {
+            border-style: dashed;
+            border: 100px;
+            color:beige;
+        }
+    </style>
 </head>
-<body>
-    <h3>설문조사</h3>
-    이름 <input type="text" name="name"><br>
-    이메일 <input type="email" name="email" placeholder="love@example.com">
+<body style="background-color: bisque; font-family: Nanum Pen Script; font-size: 20px;">
+    <div class="header">
+    <h3 style="text-align: center; border-bottom: 2px solid black; padding: 10px;">설문조사</h3>
+    이름 :  <input type="text" name="name" style="opacity: 0.5;"><br>
+    이메일 : <input type="email" name="email" style="opacity: 0.5;">
+    </div>
 
     <h4>나이</h4>
-    <input type="radio" name="10대" checked> 10대
-    <input type="radio" name="20대"> 20대
-    <input type="radio" name="30대"> 30대
-    <input type="radio" name="40대"> 40대
-    <input type="radio" name="50대"> 50대
-    <input type="radio" name="60대 이상"> 60대 이상
+    <div class="radio">
+        <input type="radio" name="10대" checked> 10대
+        <input type="radio" name="20대"> 20대
+        <input type="radio" name="30대"> 30대
+        <input type="radio" name="40대"> 40대
+        <input type="radio" name="50대"> 50대
+        <input type="radio" name="60대 이상"> 60대 이상
+    </div>
 
-    <h4>원하는 강의(복수응답가능합니다.)</h4>
+    <h4 style="text-decoration: underline;">원하는 강의(복수 응답 가능합니다.)</h4>
     <input type="checkbox" name="html" checked>html
     <input type="checkbox" name="javascript">javascript
     <input type="checkbox" name="css">css
 
     <br><br>
-    <textarea placeholder="하고 싶은 말을 써주세요:)" style="width: 800px;height: 200px;"></textarea>
+    <textarea placeholder="하고 싶은 말을 써주세요:" style="width: 800px;height: 200px; background-color: beige; border: 1000px;"></textarea>
     <input type="submit" value="제출">
 
 </body>

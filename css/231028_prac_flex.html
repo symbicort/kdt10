@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>practice display flex</title>
     <style>
-        .container{
+        /* .container{
             width: 500px;
             height: 500px;
             display: flex;
@@ -66,11 +66,13 @@
         }
         .box3-2{
             background-color: beige;
-        }
+        } */
         .container4{
             width: 500px;
             height: 500px;
             display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
             background-color: blanchedalmond;
             border: 2px solid;
             margin-top: 30px;
@@ -85,23 +87,90 @@
             width: 500px;
             height: 500px;
             display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-items: center;
             background-color: blanchedalmond;
             border: 2px solid;
             margin-top: 30px;
-            flex-wrap: wrap;
         }
         .container5 > div{
             width: 100px;
             height: 100px;
             background-color: beige;
             border: 1px solid;
-
         }
 
+        .container6{
+            width: 500px;
+            height: 500px;
+            display: flex;
+            background-color: blanchedalmond;
+            border: 2px solid;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            align-content: flex-start;
+        }
+        .container6 > div{
+            width: 100px;
+            height: 100px;
+            background-color: beige;
+            border: 1px solid;
+        }
+
+        .container7{
+            width: 500px;
+            height: 500px;
+            display: flex;
+            background-color: blanchedalmond;
+            border: 2px solid;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            flex-direction: column;
+        }
+        .container7 > div{
+            width: 100px;
+            height: 100px;
+            background-color: beige;
+            border: 1px solid;
+        }
+        .container8{
+            width: 500px;
+            height: 500px;
+            display: flex;
+            background-color: blanchedalmond;
+            border: 2px solid;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .container8 > div{
+            width: 100px;
+            height: 100px;
+            background-color: beige;
+            border: 1px solid;
+        }
+
+        .container9{
+            width: 500px;
+            height: 500px;
+            display: flex;
+            background-color: blanchedalmond;
+            border: 2px solid;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+        .container9 > div{
+            width: 100px;
+            height: 100px;
+            background-color: beige;
+            border: 1px solid;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- <div class="container">
         <div class="box"></div>
         <div class="box2"></div>
         <div class="box3"></div>
@@ -117,7 +186,7 @@
         <div class="box-2"></div>
         <div class="box2-2"></div>
         <div class="box3-2"></div>
-    </div>
+    </div> -->
     
     <div class="container4">
         <div class="box-a"></div>
@@ -132,6 +201,50 @@
     </div>
 
     <div class="container5">
+        <div class="box-a"></div>
+        <div class="box-b"></div>
+        <div class="box-c"></div>
+        <div class="box-d"></div>
+        <div class="box-e"></div>
+        <div class="box-f"></div>
+        <div class="box-g"></div>
+        <div class="box-h"></div>    
+    </div>
+
+    <div class="container6">
+        <div class="box-a"></div>
+        <div class="box-b"></div>
+        <div class="box-c"></div>
+        <div class="box-d"></div>
+        <div class="box-e"></div>
+        <div class="box-f"></div>
+        <div class="box-g"></div>
+        <div class="box-h"></div>    
+    </div>
+
+    <div class="container7">
+        <div class="box-a"></div>
+        <div class="box-b"></div>
+        <div class="box-c"></div>
+        <div class="box-d"></div>
+        <div class="box-e"></div>
+        <div class="box-f"></div>
+        <div class="box-g"></div>
+        <div class="box-h"></div>    
+    </div>
+
+    <div class="container8">
+        <div class="box-a"></div>
+        <div class="box-b"></div>
+        <div class="box-c"></div>
+        <div class="box-d"></div>
+        <div class="box-e"></div>
+        <div class="box-f"></div>
+        <div class="box-g"></div>
+        <div class="box-h"></div>    
+    </div>
+    
+    <div class="container9">
         <div class="box-a"></div>
         <div class="box-b"></div>
         <div class="box-c"></div>
