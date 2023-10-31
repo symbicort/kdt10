@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let data = ['red','orange','yellow','green','blue','navy','black']
+
+        console.log(data[2]);
+        data.push('aqua');
+        console.log(data)
+        console.log(data.indexOf("black"));
+        console.log(data.reverse());
+
+        let data2 = {
+            name : '이정원',
+            age: '21',
+            country: 'korea',
+            isHuman: true,
+        }
+
+        console.log(data2);
+        console.log(data2.age);
+        console.log(data2.country);
+
+        // typeof
+        console.log("\""+typeof 123 + "\""+ " isn't " + typeof "123" + " data type.");
+        console.log("Typeof 를 boolean 이나 null에 사용하면, \"" +
+        typeof true + "\"이나 "+ typeof {} + " 결과를 얻을 수 있습니다." )
+
+        //형변환 
+
+        let mathScore = "77";
+        let engScore = "88";
+
+        avgScore = (Number(mathScore) + Number(engScore)) / 2
+
+        console.log(avgScore);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

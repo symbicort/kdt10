@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 자료형
+        - 기본
+            - String
+            - number
+            - Boolean
+            - null */
+
+        // 1. string
+        let myName = "길동";
+        let email = "gildong@naver.com"
+        let city = 'seoul';
+
+        console.log(myName);
+        console.log(email);
+        console.log(city);
+        
+        // 문자와 변수를 동시에 출력
+        console.log('내 이름은',myName,'입니다.');
+        console.log('내 이름은' + myName + '입니다')
+        // 백틱 (``)
+        console.log(`내 이름은 ${myName} 입니다.`);
+        let gildong = `내 이름은 ${myName} 입니다.`
+        console.log(gildong)
+
+        // 2. number
+        let number = 123;
+        let opacity = 0.7;
+        console.log(number);
+        console.log(opacity);
+
+        // Nan : not a number
+        console.log('apple' - 3); //Nan
+        console.log("123" - 3); // console.log에서 변환을 해서 120
+
+        // 3. boolean
+        let checked = true;
+        let isShow = false;
+
+        console.log(checked)
+        console.log(isShow)
+
+        // 4. undefined
+        let undef;
+        console.log(undef)
+
+        // 5. null
+        let empty = null;
+        console.log(empty);
+
+
+        // 6. array
+        let fruits = ['orange','pineapple','grape','apple'];
+        let data = [1, 'gildong',false,null, undefined]
+        console.log(fruits[0]);
+
+        console.log(fruits);
+        console.log(data);
+
+        console.log(fruits[0], fruits[1])
+
+        // 2챠원 배열 : [ [], []]. []
+
+        fruits.push('banana');
+        console.log(fruits)
+        fruits.pop();
+        console.log(fruits);
+        fruits.unshift("orange")
+        console.log(fruits);
+        fruits.shift();
+        console.log(fruits);
+        console.log(fruits.indexOf("orange"))
+
+        // 7. object
+        let cat = {
+            name:'나비',
+            age: '1',
+            isCute: true,
+            // 함수도 객체 안에 넣을 수 있음
+            mew: function() {
+                console.log('냐옹');
+            }
+        }
+
+        console.log(cat);
+        console.log(cat.name);
+        console.log(cat.age);
+
+        // typeof
+        console.log(typeof "문자");
+        console.log(typeof 123);
+        console.log(typeof true);
+        console.log(typeof cat);
+        console.log(typeof fruits);
+        console.log(typeof null);
+        console.log('typeof를 array나 null에 사용하면' + typeof false + '결과를 얻을 수 있다');
+
+        // 형변환
+        // let mathScore = prompt('수학 점수를 입력해주세요.');
+        // let engScore = prompt('영어 점수를 입력해주세요.');
+
+        // let avg = (mathScore + engScore) / 2;
+
+        // console.log(avg);
+
+        // 1. 값 -> 문자 String()
+        let str1 = true;
+        let str2 = 123;
+        let str3 = null;
+
+        console.log(typeof String(str1));
+        console.log(typeof String(str2));
+        console.log(typeof String(str3));
+        // console.log(typeof str3.toString());
+
+        // 2. 값을 -> 숫자 Number()
+        let n1 = true;
+        let n2 = false;
+        let n3 = "123.9";
+
+        console.log(typeof Number(n1));
+        console.log(typeof Number(n2));
+        console.log(typeof Number(n3));
+        console.log(typeof Number('hello'))
+
+        console.log(Number (n1));
+        console.log(Number (n2));
+        console.log(Number (n3));
+        console.log(Number('hello'));
+
+
+</script>
+</head>
+<body>
+    
+</body>
+</html>
