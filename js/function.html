@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function</title>
+    <script>
+        // 함수 호출
+        functionName();
+
+        // 함수 선언
+        function functionName() {
+            // 함수 선언문
+            console.log('hello world ');
+        }
+
+        let functionName2 = function(){
+            console.log('안녕하세요2');
+        }
+
+        functionName2();
+        
+        let functionName3 = () => {
+            console.log('안녕하세요');
+        }
+        // 함수 호출
+        functionName3();
+
+        // 매개변수가 있는 함수
+        function hello(name, age){
+            // hello 라는 함수 범위 안에서만 쓸 수 있는 변수: name, age
+            console.log(name);
+            console.log(age + "세");        
+        
+            return age + 10;
+        }
+        let result = hello("홍길동", 10);
+        console.log(`result : `, result);
+
+        hello(1);
+        console.log(`name : `, name)
+
+        function test() {
+            alert('onclick test');
+        }
+
+    </script>
+</head>
+<body>
+    <div style="width: 100px; height: 100px; border: 1px solid black;" onclick="test();">test</div>
+
+    <button onclick="test()">test</button>
+</body>
+</html>

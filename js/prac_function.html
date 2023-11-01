@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // function multifly(num1, num2){
+        //     return num1 * num2
+        // }
+
+        // console.log(multifly(3,7));
+        // console.log(multifly(8,9));
+
+        // function square(num1){
+        //     return num1 ** 2
+        // }
+
+        // console.log(square(8));
+        // console.log(square(15));
+
+        function add(a,b){
+            let result = Number(a) + Number(b);
+            alert(result);
+        }
+
+        function sub(a,b){
+            let result = Number(a) - Number(b);
+            alert(result);
+        }
+
+        function divide(a,b){
+            let result = Number(a) * Number(b);
+            alert(result);
+        }
+
+        function mul(a,b){
+            let result = Number(a) / Number(b);
+            alert(result);
+        }
+
+        let num1 = prompt('연산할 숫자를 입력해주세요.');
+        let num2 = prompt('연산할 숫자를 입력해주세요.');
+
+</script>
+</head>
+<body>
+    <button onclick="add(num1, num2)">덧셈</button>
+    <button onclick="sub(num1, num2)">뺄셈</button>
+    <button onclick="divide(num1, num2)">곱셈</button>
+    <button onclick="mul(num1, num2)">나누기</button>
+</body>
+</html>

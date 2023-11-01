@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if</title>
+    <script>
+        /*
+        if(조건 1){
+            // 조건 1이 참일때 실행할 코드
+        } else if(조건2){
+            // 조건 2가 있다면 작성, 조건2가 참일 때 실행할 코드
+        } else if(조건 3){
+            // 조건 3이 있다면 작성, 조건3이 참일떄 실행할 코드
+        } else {
+            // 위의 모든 조건들이 거짓 일때 실행할 코드
+        }
+        */
+
+        if(3 > 5){
+            console.log('3 > 5');
+        }else {
+            console.log(' 3 <= 5');
+        }
+
+        let name = "lee";
+        if(name == 'kim'){
+            console.log('name : kim');
+        } else if(name == "lee"){
+            console.log('name : lee')
+        } else {
+            console.log('name : kim x lee x')
+        }
+
+        // switch문
+        /*
+        switch(변수){
+            case 값1:
+                // 변수 == 값1일때 실행할 코드
+                break; // break문을 만나면 switch를 빠져나오겠다
+            case 값2:
+                // ~~코드
+            default:
+                // 기본적으로 실행할 코드
+        }
+        */
+
+        switch(name){
+            case "kim":
+                console.log('name은 kim입니다.');
+                break;
+            case 'lee':
+                console.log('name은 lee입니다.');
+                break;
+            default:
+                console.log('kim도 lee도 아니다.');
+        }
+
+
+        // 3항 연산자
+        if(name == 'lee'){
+            console.log('name == lee');
+        } else{
+            console.log('name != lee');
+        }
+
+        /*
+        3항 연산자
+        조건식 ? 참일때 실행할 코드 : 거짓일 때 실행할 코드
+        */
+
+        // name == 'lee' ? console.log('name == lee') : console.log('name != lee');
+
+        // name == 'kim' ? console.log('name == lee') : 
+
+        let now = new Date().getHours();
+        
+        now > 12 ? console.log('현재 시각은 오후입니다.') :
+        console.log('현재 시각은 오전입니다.')
+    </script>
+    
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for</title>
+    <script>
+        for(let i = 0; i < 10; i++){
+            // 초기화: i를 0으로 셋팅
+            // 조건식: i가 10보다 작을때
+            // 증감식 : i를 1씩 키우겠다
+            console.log('i :', i); // i : 0 ~ 9
+        }
+        for(let i = 1; i < 10; i = i + 2){
+            console.log('i :', i);
+        }
+
+        //while문
+        let i = 0;
+        while(i < 5){
+            console.log('while i :', i);
+            i++;
+        }
+
+        while(true) {
+            console.log('while true i :', i)
+            i++;
+            if(i == 10){
+                break;
+            }
+        }
+
+        //break
+
+        for(let n = 0; n < 100; n++){
+            if(n == 10){
+                console.log('stop');
+                break;
+            }
+            console.log(n)
+        }
+
+        //continue문
+        for(let n = 0; n < 100; n++){
+            if(n == 10){
+                console.log('stop');
+                continue;
+            }
+            console.log(n)
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
