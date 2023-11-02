@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>method</title>
+    <script>
+        // 문자열 관련 메소드
+        let str = ' Happy day~! '
+
+        // 1. 문자열 길이
+        console.log('length : ', str.length);
+
+        //2. (영어) 문자열을 대문자/소문자로
+        console.log('toUpperCase :', str.toUpperCase());
+        console.log('toUpperCase :', str.toLowerCase());
+
+        // 3. index를 가져오기
+        console.log('index :', str.indexOf("y"));
+        console.log('last index :', str.lastIndexOf('y'));
+        console.log('H index :', str.lastIndexOf('H'));
+
+        // 4. 문자열 자르기(첫 매개변수 필수, 두번째는 선택)
+        console.log('slice :', str.slice(0,6));
+        console.log('slice :', str.slice(-2));
+        
+        // 5. 바꾸기
+        // replace : 제일 먼저 찾아지는 한친구만 바꿈
+        console.log('replace p -> a : ', str.replace('p','a'));
+        console.log('replace all a -> k : ', str.replaceAll('a','k'));
+
+
+        // 6. 반복
+        console.log('repeat :', str.repeat(5));
+        console.log('repeat :', str * 5);
+
+        // 7. split : 문자열을 내가 원하는 부분에서 자르고, 그걸 배열로 만들어줌
+        console.log('split :', str.split(""));
+        console.log('split : ', str.split(" "));
+        console.log('split : ', str.split("a"));
+
+        // 8. trim 좌우 공백 제거
+        console.log('trim :',str.trim());
+        console.log('trim :', str)
+
+        // 배열 메소드
+
+        // join : join 안의 문자열 기준으로 문자열로 병합
+        let months = ["M","T","W","T","F","S","S"];
+        console.log("join : ", months.join());
+        console.log("Join" , months.join('&'));
+        console.log("Join" , months.join(''));
+
+        // 메소드 체이닝
+        // : 각각의 다른 메소드를 연결해서 사용하는 개념
+        // 메소드에 return(반환값) 이 있을 때 사용 가능함
+
+        // 문자열을 뒤집고 싶을 때? 문자열 메소드에는 뒤집는 메소드가 없음
+        // -> 문자열 -> 배열 -> 배열 뒤집기 -> 문자열
+
+        let hello = "Hello~"
+        helloArr = hello.split("");
+        let reverseHello = helloArr.reverse();
+        console.log('reverse :',reverseHello, typeof(reverseHello));
+
+        let helloAgain = reverseHello.join("");
+        console.log(helloAgain, typeof(helloAgain));
+
+        console.log('메소드 체이닝 :',hello.split("").reverse().join(""));   
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

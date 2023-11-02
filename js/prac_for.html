@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let numArr = [];
+        let arrSum = 0;
+        let arrSum1 = 0;
+        let arrSum2 = 0;
+
+        for(let i = 1; i < 101; i++){
+            numArr.push(i);
+        }
+        
+        // for
+        for(let i = 0; i < numArr.length; i++){
+            arrSum += numArr[i];
+        }
+
+        console.log(arrSum);
+
+        // for of
+        for(num1 of numArr) {
+            arrSum1 += num1
+        }
+
+        console.log(arrSum1);
+
+        // for each
+        numArr.forEach(num => arrSum2 += num);
+
+        console.log(arrSum2);
+
+
+        let fruits1 = ["사과", "딸기", "파인애플", "수박", "참외", "오렌지", "자두", "망고"];
+        let fruits2 = ["수박", "사과", "참외", "오렌지", "파인애플", "망고"];
+
+        let same = [];
+        let diff = [];
+
+        same = (fruits1.filter(fruit => fruits2.includes(fruit)));
+        console.log(same);
+
+        diff = (fruits1.filter(fruit => !fruits2.includes(fruit)));
+        console.log(diff);
+
+        console.log(0 % 2 == 0);
+
+        function solution(num) {
+            if(num % 2 == 0){
+                return "Even"
+            } else{
+            return "Odd"
+            }
+        }
+
+    
+
+        function solution1(num){
+            let str = '';
+            for(i=1; i<=num; i++){
+                if(i % 2 == 0){
+                    str += '박';
+                } else{
+                    str += '수';
+                }
+            }
+            return str;
+        }
+
+        console.log(solution1(9));
+
+        // function solution2(n){
+        //     let answer = 0;
+
+        //     for(i = 1; i<=n; i++){
+        //         if(n % i == 0){
+        //             value.push(i);
+        //         }
+        //     }
+        //     for(i=0; i<value.length; i++){
+        //         answer += Number(value[i]);
+        //     }
+        //     return answer;
+        // }
+
+        // console.log(solution2(12));
+
+
+        function solution3(n){
+            let answer = 0
+            let value = String(n).split("");
+            value = value.map((i) => Number(i));
+            for(i = 0; i<value.length; i++){
+                answer += value[i];
+            }
+            return answer;
+        }
+
+        console.log(solution3(457));
+
+        function solution4(numbers){
+            let answer = 0;
+            let origin = [0,1,2,3,4,5,6,7,8,9];
+            let diff = [];
+            diff = (origin.filter(num1 => !numbers.includes(num1)));
+            for(i = 0; i<diff.length; i++){
+                answer += diff[i];
+            }
+            return answer;
+        }
+
+        console.log(solution4([1,2,3,4,6,7,8,0]));
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
