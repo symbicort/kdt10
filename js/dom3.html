@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="green">1</div>
+        previous 테스트
+        <div class="box" id="red">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+
+    </div>
+
+    <button onclick="getParent()">getParent</button>
+    <button onclick="pELSibling()">peisSiblint</button>
+    <button onclick="pNOSibling()">pNOSibling</button>
+    <button onclick="nELSibling()">nELSibling</button>
+    <button onclick="nNOSibling()">nNOSibling</button>
+
+    <script>
+        let container = document.getElementById('container');
+        let greenBox = document.getElementById('green');
+        let redBox = document.getElementById('red');
+        
+
+        console.log('children :', container.children );
+
+        function getParent(){
+            console.log(greenBox.parentNode);
+        }
+
+        function pELSibling(){
+            console.log(redBox.previousElementSibling);
+        }
+
+        function pNOSibling(){
+            console.log(redBox.previousSibling);
+        }
+        function nELSibling(){
+            console.log(redBox.previousElementSibling);
+        }
+
+        function nNOSibling(){
+            console.log(redBox.previousSibling);
+        }
+
+
+    </script>
+
+</body>
+</html>

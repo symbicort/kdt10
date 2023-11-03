@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prac_dom2</title>
+    <script>
+        let num = 0
+
+        function add(){
+            let table = document.getElementById('board');
+            let writer = document.getElementById('writer');
+            let content = document.getElementById('content');
+
+            num += 1;
+
+            let newRow = table.insertRow();
+
+            let newCell1 = newRow.insertCell(0);
+            let newCell2 = newRow.insertCell(1);
+            let newCell3 = newRow.insertCell(2);
+            let newCell4 = newRow.insertCell(3);
+
+            newCell1.innerText = num;
+            newCell2.innerText = writer.value;
+            newCell3.innerText = content.value;
+            newCell4.innerText = new Date();
+
+
+        }
+    </script>
+</head>
+<body>
+    방명록 입니다.<br><br>
+    <strong>작성자</strong> 
+    <input type="text" name="" id="writer"><br><br>
+
+    <strong>내용</strong>
+    <input type="text" name="" id="content" style="width: 300px;"><br><br>
+    <button onclick="add()">작성</button><br><hr>
+
+
+    <table cellspacing="0" border="1px" id="board" style="font-style: normal;">
+        <thead>
+            <th style="width: 50px;">번호</th>
+            <th style="width: 70px;">작성자</th>
+            <th>내용</th>
+            <th>작성일</th>
+        </thead>
+
+    </table>
+
+</body>
+</html>
