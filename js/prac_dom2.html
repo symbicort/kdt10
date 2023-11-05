@@ -14,18 +14,37 @@
 
             num += 1;
 
-            let newRow = table.insertRow();
+            //insertRow, insertCell 함수 사용
+            // let newRow = table.insertRow();
 
-            let newCell1 = newRow.insertCell(0);
-            let newCell2 = newRow.insertCell(1);
-            let newCell3 = newRow.insertCell(2);
-            let newCell4 = newRow.insertCell(3);
+            // let newCell1 = newRow.insertCell(0);
+            // let newCell2 = newRow.insertCell(1);
+            // let newCell3 = newRow.insertCell(2);
+            // let newCell4 = newRow.insertCell(3);
 
-            newCell1.innerText = num;
-            newCell2.innerText = writer.value;
-            newCell3.innerText = content.value;
-            newCell4.innerText = new Date();
-        
+            // newCell1.innerText = num;
+            // newCell2.innerText = writer.value;
+            // newCell3.innerText = content.value;
+            // newCell4.innerText = new Date();
+
+            let tr = document.createElement('tr');
+
+            let td1 = document.createElement('td');
+            let td2 = document.createElement('td');
+            let td3 = document.createElement('td');
+            let td4 = document.createElement('td');
+
+            td1.innerText = num;
+            td2.innerText = writer.value;
+            td3.innerText = content.value;
+            let date = new Date();
+
+            td4.innerText = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDay();
+
+            tr.append(td1,td2,td3,td4);
+
+            table.appendChild(tr);
+            
         }
     </script>
 </head>
