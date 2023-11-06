@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>jQuery</title>
+    <script>
+        function setValue(){
+            $('#input1').val('setting');
+            document.getElementById('input1').value = 'setting';
+        }
+        function getValue(){
+            alert($('#input1').val());
+        }
+        function changeStyle(){
+            $('span').css('font-size','28px');
+            $('span').css('background-color','orange');
+            //span요소.style = "font-size: 20px"
+        }
+        function changeAttribute(){
+            $('#input1').attr('placeholder','input');
+            //input 요소.setAttribute('placeholder','input')
+        }
+        function changeText(){
+            $('span').text("jQuery Text");
+            //span요소.innerText = "~~"
+        }
+        function changeHTML(){
+            $('p').html('<h3>jQuery html</h3>');
+            // p요소 innerHTML = "~~"
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="input1">
+    <button onclick="setValue()">setValue</button>
+    <button onclick="getValue()">getValue</button>
+    <br>
+    <span style="display:inline-block; width: 100px;">hello</span>
+    <button onclick="changeStyle()">changeStyle</button>
+    <button onclick="changeAttribute()">changeAttribute</button>
+    <button onclick="changeText()">changeText</button>
+    <p>text</p>
+    <button onclick="changeHTML()">changeText</button>
+</body>
+</html>

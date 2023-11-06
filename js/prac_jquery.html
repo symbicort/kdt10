@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <script>
+        function apple(){
+            $('#image').attr("src","apple.png");
+        }
+        function banana(){
+            $('#image').attr("src","banana.png");
+        }
+        function grape(){
+            $('#image').attr("src","grape.png");
+        }
+        function peach(){
+            $('#image').attr("src","peach.png");
+        }
+    </script>
+    <style>
+        button{
+            background-color: rgb(86, 83, 83);
+            color: white;
+            height: 45px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <img id = "image" alt="" style="width: 450px; height: 450px; ">
+    <br>
+
+    <button onclick="apple()">사과</button>
+    <button onclick="banana()">바나나</button>
+    <button onclick="grape()">포도</button>
+    <button onclick="peach()">복숭아</button>
+    </center>
+</body>
+</html>

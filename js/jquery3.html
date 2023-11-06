@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        .color-blue{
+            color: blue;
+        }
+        .color-orange{
+            color: orange;
+        }
+        .fs-50{
+            font-size: 50px;
+        }
+
+    </style>
+    <script>
+        function addClass(){
+            $('#hi').addClass('fs-50');
+        }
+        function removeClass(){
+            $('#hi').addClass('fs-50');
+        }
+        function hasClass(){
+            console.log($('#hi').hasClass('fs-50'));
+        }
+        function toggleClass(){
+            // 있으면 삭제,없으면 추가
+            $('#hi'),toggleClass('fs-50');
+        }
+        function switchClass(){
+            $('#hi').switchClass("color-blue","color-orange");
+        }
+    </script>
+</head>
+<body>
+    <p id="hi" class="color-blue">안녕하세요</p>
+    <button onclick="addClass()">addClass</button>
+    <button onclick="removeClass()">removeClass</button>
+    <button onclick="hasClass()">hasClass</button>
+    <button onclick="toggleClass()">toggleClass</button>
+    <button onclick="switchClass()">switch 클래스</button>
+</body>
+</html>
