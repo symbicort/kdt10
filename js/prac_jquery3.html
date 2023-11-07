@@ -31,17 +31,6 @@
         cursor: pointer;
     }
     </style>
-    <script>
-
-        function writeSchedule(){
-        
-        let input1 = $('#date').val();
-        let input2 = $('#content').val();
-        
-        console.log(input1)
-        console.log(input2)
-    }
-    </script>
 </head>
 
 <body>
@@ -125,12 +114,21 @@
 
     <script>
         $('td > p').on('click',function(){
-            var tr = $(this);
-			
-            let selectDate = tr.text();
+            let target = document.getElementById('date');
+
+            target.value = $(this).text();
+            result = this;
+		
 			// tr.text()는 클릭된 Row 즉 tr에 있는 모든 값을 가져온다.
-			$("#date").val(selectDate);
+			// $("#date").val(tr);
         })
+
+        function writeSchedule(){
+        
+        let input2 = $('#content').val();
+
+        $(result).append(`<p>${input2}</p>`);
+    }
     </script>
 </body>
 </html>
