@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mediaQuery</title>
+</head>
+    <style>
+        /* all : 모든 경우 */
+        @media all and (max-width :300px){
+            .all {
+                font-size: 2rem;
+            }
+        }
+        /* print: 인쇄, 인쇄 미리보기 */
+        @media print and (max-width :600px){
+            .print {
+                font-size: 2rem;
+            }
+        }
+        /* screen : 인쇄를 제외한 모든 css 적용 */
+        @media screen and (max-width :600px){
+            .screen {
+                font-size: 2rem;
+            }
+        }
+
+        /* 미디어 유형 작성하지 않은 경우 기본값 all */
+        @media (max-width :600px){
+            .no {
+                font-size: 3rem;
+            }
+        }
+    </style>
+<body>
+    <div class="all">all</div>
+    <div class="print">print</div>
+    <div class="screen">screen</div>
+    <div class="no">no</div>
+</body>
+</html>
