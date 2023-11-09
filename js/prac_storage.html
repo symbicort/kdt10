@@ -11,20 +11,12 @@
     <label for="pw">password : </label>
     <input type="text" name="pw" id="pw">
 
-    <button type="button" onclick="signIn(); location.href='login.html';">회원가입</button>
+    <button type="button" onclick="signIn(); ">회원가입</button>
     <button type="button" onclick="login()">로그인</button>
     <button type="button" onclick="checkLoggedIn()">로그인 확인</button>
     <button type="button" onclick="logout()">로그아웃</button>
 </body>
 <script>
-    // 스토리지 : 프론트에서 웹에 저장할 수 있는 저장소
-    // key 와 value의 값으로 이루어진 데이터를 저장할 수 있음
-
-    // 세션 스토리지 : 웹 페이지의 세션이 끝날 때 저장된 데이터가 모두 사라짐
-        // 탭이 다른 경우, 탭을 닫은 경우 저장된 데이터를 사용 할 수 없음
-    // 로컬 스토리지 : 세션이 끝나더라도 데이터가 지워지지 않음
-        // 탭이 다르거나, 해당 페이지를 나가도 데이터를 사용 할 수 있음
-        // 만료 시간을 정함
     const inputId = document.querySelector('#id');
     const inputPw = document.querySelector('#pw');
 
@@ -74,7 +66,17 @@
         localStorage.removeItem('loggedIn');
     }
     let signIn = () => {
-        localStorage
+        const inputId = document.querySelector('#id');
+        const inputPw = document.querySelector('#pw');
+        //local storage로 키와 값 보내주기
+        localStorage.setItem(`userInfo(${inputId.value})`, JSON.stringify({id: inputId.value, pw: btoa(inputPw.value)})); 
+        //값으로 객체 보내주기. 
+        console.log(localStorage.getItem("user_info"));
+        //local storage에서 해당 키 값 가져오기
+        console.log(JSON.parse(localStorage.getItem("user_info")));
+        //local storage에서 객체 또는 배열 값 가져오기
+
+
     }
 </script>
 </html>
