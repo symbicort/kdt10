@@ -38,8 +38,10 @@ app.get('/login', function(req,res){
 // register 경로로 접속했을 때
 app.get('/register', function(req,res){
     res.render("register",{
-        id:'symbicort',
-        pw:'test1234'
+        userInfo: {
+            email:'admin@gmail.com',
+            pw:'admin1234'
+        }
     });
 })
 
