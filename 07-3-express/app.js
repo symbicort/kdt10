@@ -16,11 +16,31 @@ app.get('/', function(req,res){
     // res.send('<h1>hello Express</h1>');
 
     // index라는 파일명을 찾아서 해당 파일 렌더
-    res.render("index");
+    res.render("index",{
+        btns: ['사과','오렌지','키위'],
+        isLogin: false,
+        me: {
+            name: 'symbicort',
+            msg:'hello'
+        }
+    });
 })
 
 app.get('/kdt', function(req,res){
     res.send('<h1>hello Expresddds</h1>');
+})
+
+// login 경로로 접속했을 때
+app.get('/login', function(req,res){
+    res.render("login");
+})
+
+// register 경로로 접속했을 때
+app.get('/register', function(req,res){
+    res.render("register",{
+        id:'symbicort',
+        pw:'test1234'
+    });
 })
 
 app.listen(PORT, function(){
