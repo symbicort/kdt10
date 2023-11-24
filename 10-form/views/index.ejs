@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form 전송</title>
+</head>
+<body>
+    <h1>Form</h1>
+
+    <h2>Get 요청</h2>
+
+    <form action="/login" method="get">
+        <label for="id">ID</label>
+        <input type="text" name="id" placeholder="ID는 최소 3글자" minlength="3">
+        <label for="">
+            PW
+            <input type="password" name="pw" placeholder="PW" id="pw" required>
+        </label>
+
+        <input type="number" name="grade" placeholder="GRADE" max="4">
+
+        <!-- form 태그 안에 있는 button 태그는 type: submit -->
+        <button type="submit">제출</button>
+    </form>
+
+    <h2>Post 요청</h2>
+    <!-- pattern 속성: 폼 요소에 값 입력되었을 때, 그 입력된 값에 대해 검증 -->
+    <!-- required 속성 : 폼 요소에 값이 반드시 들어가야 하는지 여부를 결정 -->
+
+    <form action="/login" method="post">
+        <label for="id">ID</label>
+        <input type="text" name="id" placeholder="ID는 최소 3글자" pattern="^([a-zA-Z0-9가-힣]){4,10}$" title="아이디는 대소문자, 숫자, 한글로 구성된 4자 이상의 문자여야 합니다." required>
+        <label for="">
+            PW
+            <input type="password" name="pw" placeholder="PW" id="pw2" pattern="^([a-z0-9]){8,12}$">
+        </label>
+        <!-- form 태그 안에 있는 button 태그는 type: submit -->
+        <button type="submit">제출</button>
+    </form>
+
+    <h2>js 유효성 검사</h2>
+    <!-- js form 유효성 검사 -->
+    <form action="/js-form-check" method="post" name="valiForm" onsubmit="return checkForm(this)" target="_blank">
+        <input type="text" name="id" id="id" minlength="1" placeholder="ID">
+        <span>우편물 수령장소</span>
+        <input type="checkbox" name="post" id="자택" value="자택">자택
+        <input type="checkbox" name="post" id="회사" value="회사">회사
+        <button>제출</button>
+
+    </form>
+    <br><br>
+    <form action="/prac-get">
+        <label for="name">이름</label>
+        <input type="text" name="name" placeholder="ID는 최소 3글자">
+        <fieldset>
+            <legend>성별</legend>
+                <input type="radio" name="man" id="man">남자
+                <input type="radio" name="man" id="man">여자
+        </fieldset>
+
+        <fieldset>
+            <legend>생년월일</legend>
+            
+        </fieldset>
+
+        <fieldset>
+            <legend>관심사</legend>
+            <input type="checkbox" name="trip" id="trip">여행
+            <input type="checkbox" name="trip" id="trip">패션
+            <input type="checkbox" name="trip" id="trip">음식
+            </select>
+        </fieldset><br>
+
+        <button>회원가입</button>
+    </form>
+
+    <script>
+        function checkForm(form){
+            // 1)name으로 폼 선택
+            // const form = document.forms('valiForm');
+            console.log(form);
+
+            if(form.id.value == ''){
+                form.id.focus();
+                alert('아이디를 입력해주세요');
+
+                return false; //submit 이벤트가 일어나지 않음
+            }
+
+            // 각각의 Input 요소의 name 속성값으로 접근
+            if((form.post[0].checked == false) && (form.post[1].checked == false)){
+                alert("우편물 수령 장소를 선택해주세요");
+                return false;
+            }
+        }
+    </script>
+
+</body>
+</html>

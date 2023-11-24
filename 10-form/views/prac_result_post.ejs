@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>post 폼 결과 확인</h1>
+    <div>
+        <span>이름 : <%= result.name %></span><br><br>
+        <span>생년월일 : 
+            <%= result.year %>년
+            <%= result.month %>월
+            <%= result.day %>일
+        </span><br><br>
+        <span>성별 : 
+            <% if(result.man) { %>
+                남자
+            <% } %>
+            <% if(result.woman) { %>
+                여자
+            <% } %>
+        </span><br><br>
+        <span>관심사 : 
+            <% if(result.trip) { %>
+                여행
+            <% } %>
+            <% if(result.fash) { %>
+                패션
+            <% } %>
+            <% if(result.food) { %>
+                음식
+            <% } %>
+        </span><br><br>
+
+        <span>좋아하는 색상 : 
+            <% if(result.color) { %>
+                <%= result.color %>
+            <% } %>
+        </span><br><br>
+
+        <span>좋아하는 숫자 : 
+            <% if(result.number) { %>
+                <%= result.number %>
+            <% } %>
+            
+        </span>
+        
+    </div>
+    
+    <%= console.log(result) %>
+</body>
+</html>
