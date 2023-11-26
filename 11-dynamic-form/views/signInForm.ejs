@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get Form</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <form name="signInForm">
+        <label for="name">이름</label>
+        <input type="text" name="name" placeholder="ID는 최소 3글자">
+        <fieldset>
+            <legend>성별</legend>
+                <input type="radio" name="gender" value="man">남자
+                <input type="radio" name="gender" value="woman">여자
+        </fieldset>
+
+        <fieldset>
+            <legend>생년월일</legend>
+            <select name="year" id="year">
+                <% for(let i =0; i< 30; i++) { %>
+                <option value="<%= 2010 -i %> "><%= 2010 -i %>년</option>
+                <% } %>
+            </select>년
+            <select name="month" id="month">
+                <% for(let i =1; i<= 12; i++) { %>
+                    <option value="<%= i %> "><%= i %>월</option>
+                <% } %>
+            </select>월
+            <select name="day" id="day">
+                <% for(let i =1; i<= 31; i++) { %>
+                    <option value="<%= i %> "><%= i %>일</option>
+                <% } %>
+            </select>일
+        </fieldset>
+
+        <fieldset>
+            <legend>관심사</legend>
+            <input type="checkbox" name="trip" value="trip">여행
+            <input type="checkbox" name="fash" value="fash">패션
+            <input type="checkbox" name="food" value="food">음식
+            </select>
+        </fieldset><br>
+
+        <fieldset>
+            <legend>선택</legend>
+                좋아하는 색상 <input type="color" name="color" style="width: 100px;"><br>
+                좋아하는 숫자 <input type="number" name="number" min="0" max="100">
+        </fieldset>
+
+        <button type="button" onclick="axiosGet()">회원가입</button>
+    </form>
+
+    <script>
+        async function axiosGet() {
+            const form = document.forms['signInForm'];
+        const data = {
+            name: form.name.value,
+            gender: form.gender.value,
+            year: form.year.value,
+            month: form.month.value,
+            day: form.day.value,
+            trip: form.trip.checked,
+            fash: form.fash.checked,
+            food: form.food.checked,
+            color: form.color.value,
+            number: form.number.value
+        };
+
+        try {
+            const response = await axios({
+                method: 'get',
+                url: '/axioss',
+                params: data
+            });
+
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error during axios request:', error);
+        }
+}
+
+    </script>
+</body>
+</html>
