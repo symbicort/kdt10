@@ -7,7 +7,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <form name="signInForm">
+    <form name="signInForm" method="get" action="">
         <label for="name">이름</label>
         <input type="text" name="name" placeholder="ID는 최소 3글자">
         <fieldset>
@@ -52,9 +52,10 @@
         <button type="button" onclick="axiosGet()">회원가입</button>
     </form>
 
-    <script>
-        async function axiosGet() {
-            const form = document.forms['signInForm'];
+    <!-- 수정된 axiosGet 함수 -->
+<script>
+    function axiosGet() {
+        const form = document.forms['signInForm'];
         const data = {
             name: form.name.value,
             gender: form.gender.value,
@@ -68,19 +69,17 @@
             number: form.number.value
         };
 
-        try {
-            const response = await axios({
-                method: 'get',
-                url: '/axioss',
-                params: data
-            });
+        axios({
+            method: 'get',
+            url: '/axioss',
+            params: data // 서버로 보낼 데이터
+        }).then((response) => {
+            console.log(response);
+            // 서버로부터 받은 응답을 이용하여 페이지 업데이트
+            document.body.innerHTML = response.data;
+        });
+    }
+</script>
 
-            console.log(response.data);
-        } catch (error) {
-            console.error('Error during axios request:', error);
-        }
-}
-
-    </script>
 </body>
 </html>

@@ -49,15 +49,24 @@ app.get('/fetch',(req,res) => {
 })
 
 app.get('/axioss', (req, res) => {
-    const resultData = {
-        query: req.query,
-    };
-
-    // res.render 함수의 두 번째 인자로 데이터를 전달
-    res.render('result', { result: resultData });
+    const resultData = req.query;
+    res.render('result', { 
+        result: resultData 
+    });
 });
 
+app.get('/login', (req,res) => {
+    res.render('loginForm');
+})
 
+app.post('/loginchk',(req,res) => {
+    // views 폴더 내부에 index라는 ejs파일을 보여줌
+    console.log(req.body[1]);
+    res.send({
+        inputid: req.body[0],
+        inputpw: req.body[1]
+    });
+})
 
 app.listen(PORT, () => {
     console.log(`server is opened by ${PORT}`);
