@@ -40,12 +40,16 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use('/uploads',express.static(__dirname))
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 app.get('/', (req, res) => {
     res.render('index');
 })
 
+app.get('/prac', (req, res) => {
+    res.render('prac_index');
+})
 
 // 1. single(): 하나의 파일을 업로드
 // upload.single('userfile') : 클라이언트 요청이 들어오면,
@@ -101,8 +105,15 @@ app.post('/upload/fields', uploadDetail.fields([{ name: 'userfile1' }, { name: '
 app.post('/dynamic',uploadDetail.single('dynamicFile'), (req,res) => {
     console.log(req.file);
     console.log(req.body);
-    res.send({file: req.data});
+    res.send({file: req.file});
 });
+
+app.post('/dynamic_prac',uploadDetail.single('dynamicFile'), (req,res) => {
+    console.log(req.file);
+    console.log(req.body);
+    res.send({userInfo: req.body, file: req.file});
+});
+
 
 app.listen(PORT, () => {
     console.log(`${PORT} port is opening!`);

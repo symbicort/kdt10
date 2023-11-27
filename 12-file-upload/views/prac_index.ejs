@@ -4,13 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        #signIn{
+            width: 300px;
+            height: 200px;
+            background-color: rgb(201, 241, 207);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        #signIn *{
+            padding: 2px;
+            margin: 2px;
+        }
+        .viewInfo{
+            width: 300px;
+            height: 400px;
+            background-color: beige;
+            border-radius: 50px;
+            text-align: center;
+            padding: 10px;
+        }
+        .Image{
+            padding: 13px;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
 </head>
+
 <body>
-    <input type="text" id="id" name="id" placeholder="아이디">
-    <input type="password" id="pw" name="pw" placeholder="비밀번호">
-    <input type="text" id="name" name="name" placeholder="이름">
-    <input type="number" id="age" name="age" placeholder="나이">
-    <input type="file" name="dynamicFile" id="dynamicFile"><br><br>
-    <button type="button" onclick="fileUpload()">업로드</button><br>
+    <div id="signIn">
+        <input type="text" id="id" name="id" placeholder="아이디">
+        <input type="password" id="pw" name="pw" placeholder="비밀번호">
+        <input type="text" id="name" name="name" placeholder="이름">
+        <input type="number" id="age" name="age" placeholder="나이">
+        <input type="file" name="dynamicFile" id="dynamicFile"><br><br>
+        <button type="button" onclick="fileUpload()">회원가입</button><br>
+    </div><br><br>
+    <div id="viewInfo">
+        <img src="" alt="">
+        <h4 id="viewId"></h4>
+        <div id="viewPw"></div>
+        <div id="viewName"></div>
+        <div id="viewAge"></div>
+    </div>
+
+    <script>
+        function fileUpload(){
+            // js만으로 폼 전송
+            // file을 같이 전송 -> FormData 객체를 활용하기
+            // FormData란?
+            // form 태그의 데이터를 동적으로 제어할 수 있는 기능, 보통 axios, ajax 등등과 함께 사용
+
+            const formData = new FormData();
+            const file = document.querySelector('#dynamicFile');
+            const id = document.querySelector('#id');
+            const pw = document.querySelector('#pw');
+            const name = document.querySelector('#name');
+            const age = document.querySelector('#age');
+
+            // append(key.value)
+            formData.append('dynamicFile',file.files[0]);
+            formData.append('id',id.value);
+            formData.append('pw',pw.value);
+            formData.append('name',name.value);
+            formData.append('age',age.value);
+
+
+            axios({
+                method : 'post',
+                url: '/dynamic_prac',
+                data: formData,
+                headers: {
+                    'content-type' : 'multipart/form-data',
+                    // enctype 지정과 동일
+                }
+            }).then((res) => {
+                console.log(res.data);
+                const {userInfo,file} = res.data;
+                console.log(userInfo);
+                console.log(file);
+
+                console.log('file >',file);
+
+                const Box = document.getElementById('viewInfo');
+                const viewId = document.getElementById('viewId');
+                const viewPw = document.getElementById('viewPw');
+                const viewAge = document.getElementById('viewAge');
+                const viewName = document.getElementById('viewName');
+                
+                Box.classList.add('viewInfo');
+                viewId.innerText = `${userInfo.id}님 환영합니다!`;
+                viewPw.innerText = `비밀번호 : ${userInfo.pw}`;
+                viewAge.innerText = `나이 : ${userInfo.age}`;
+                viewName.innerText = `이름 : ${userInfo.name}`;
+
+                const imgElem = document.querySelector('img');
+                imgElem.src = '/' + file.path;
+                imgElem.classList.add('Image');
+
+            })
+
+        }
+    </script>
+
 </body>
 </html>

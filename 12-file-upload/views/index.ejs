@@ -5,15 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File upload</title>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <style>
-        .profile{
+        .profile {
             width: 200px;
             height: 200px;
             border-radius: 50%;
+            box-shadow: 0 0 20px #0002;
         }
     </style>
+
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -38,66 +41,69 @@
         <input type="file" name="userfiles" multiple><br>
         <input type="text" name="title"><br><br>
         <button>업로드</button>
-    </form><hr>
+    </form>
+
+    <hr>
 
     <h2>Multi file upload v2</h2>
     <p>여러 개의 인풋에 각각의 파일을 업로드</p>
 
     <!-- 하나의 인풋에 여러개 업로드 할 경우 multiple 속성 추가 -->
     <form action="/upload/fields" method="post" enctype="multipart/form-data">
-    <input type="file" name="userfile1"><br>
-    <input type="text" name="title"><br><br>
-    <input type="file" name="userfile2"><br>
-    <input type="text" name="title"><br><br>
-    <button>업로드</button>
+        <input type="file" name="userfile1"><br>
+        <input type="text" name="title"><br><br>
+        <input type="file" name="userfile2"><br>
+        <input type="text" name="title"><br><br>
+        <button>업로드</button>
     </form>
+
     <hr>
     <h2>동적 파일 업로드</h2>
     <input type="text" name="title" id="title" placeholder="TITLE">
     <input type="file" name="dynamicFile" id="dynamicFile"><br><br>
-    <button type="button" onclick="fileUpload()">업로드</button><br>
+    <button type="button" onclick="fileUpload()">업로드</button>
+    <br>
     <!-- 업로드한 이미지를 보여줄 img 태그 -->
-    <img src="" alt="">
+    <img src="" alt="??">
 
     <script>
-        function fileUpload(){
-            // js만으로 폼 전송
-            // file을 같이 전송 -> FormData 객체를 활용하기
-            // FormData란?
-            // form 태그의 데이터를 동적으로 제어할 수 있는 기능, 보통 axios, ajax 등등과 함께 사용
+        function fileUpload() {
+          // js만으로 폼 전송
+          // file을 같이 전송 -> FormData 객체를 활용하기!
+          // FormData란?
+          // form 태그의 데이터를 동적으로 제어할 수 있는 기능, 보통 axios,ajax 등등 과 함께 사용
 
             const formData = new FormData();
             const file = document.querySelector('#dynamicFile');
-            const title = document.querySelector('#title')
+            const title = document.querySelector('#title');
 
-            console.log(file);
-            console.log(file.files);
-            console.log(file.files[0]);
 
-            // append(key.value)
-            formData.append('dynamicFile',file.files[0]);
-            formData.append('title',title.value);
+          // append(key, value)
+            formData.append('dynamicFile', file.files[0]);
+            formData.append('title', title.value);
 
             axios({
-                method : 'post',
-                url: '/dynamic',
-                data: formData,
-                headers: {
-                    'content-type' : 'multipart/form-data',
-                    // enctype 지정과 동일
-                }
+            method: 'post',
+            url: '/dynamic',
+            data: formData,
+            headers: {
+                'Content-Type': 'multipart/form-data',
+              // enctype 지정과 동일
+            }
             }).then((res) => {
-                console.log(res.data);
-                const {file,title} = res.data;
+            console.log(res.data);
+            const {
+                file,
+                title
+            } = res.data;
 
-                console.log('file >',file);
-
-                const imgElem = document.querySelector('img');
-                imgElem.src = '/' + file.path;
-                imgElem.alt = title;
-                imgElem.classList.add('profile');
+            console.log('file >', file);
+            // 이미지가 저장된 경로인 file.path 이용
+            const imgElem = document.querySelector('img');
+            imgElem.src = '/' + file.path;
+            imgElem.alt = title;
+            imgElem.classList.add('profile');
             })
-
         }
     </script>
 </body>
