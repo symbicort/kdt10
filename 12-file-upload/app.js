@@ -24,6 +24,7 @@ const uploadDetail = multer({
             const ext = path.extname(file.originalname);
             console.log('ext >', ext);
             console.log('file name >', path.basename(file.originalname, ext));
+            console.log(req.body.id);
 
             // path.basename(file.originalname, ext) => apple
             // => 확장자를 제외한 파일이름만
@@ -109,7 +110,7 @@ app.post('/dynamic',uploadDetail.single('dynamicFile'), (req,res) => {
 });
 
 app.post('/dynamic_prac',uploadDetail.single('dynamicFile'), (req,res) => {
-    console.log(req.file);
+    // console.log(req.file);
     console.log(req.body);
     res.send({userInfo: req.body, file: req.file});
 });
