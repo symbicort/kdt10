@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .non {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="loginInfoBox">
+        <div id="login">
+            <button type="button">회원가입</button>
+            <button type="button" onclick="goLogin()">로그인</button>
+        </div>
+    </div>
+
+    <script>
+        const loginInfo = document.getElementById('loginInfoBox');
+        const login = document.getElementById('login');
+
+        function goLogin(){
+            document.location.href = '/login';
+        }
+
+        if(`<%= loginUser %>`) {
+            loginInfo.innerHTML = '<div id="isLogin"><a><%= loginUser %> 님 환영합니다.</a><input type="button" value="로그아웃"></div>';
+            login.setAttribute("class", "non");
+            console.log(`<%= loginUser %>`);
+            console.log(typeof(`<%= loginUser %>`));
+        }
+    </script>
+</body>
+</html>
+
