@@ -52,13 +52,13 @@ app.post('/login', (req,res) => {
     }
 })
 
-app.get('/destroy', (req,res) => {
+app.post('/deleteUser', (req,res) => {
     req.session.destroy((err) => {
         if(err) {
             console.log(err);
             res.send('failed', err);
         }
-        res.redirect('/');
+        res.send('delete success');
     })
 });
 

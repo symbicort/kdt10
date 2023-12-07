@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Document</title>    <!-- axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
         .non {
             display: none;
@@ -27,10 +28,21 @@
         }
 
         if(`<%= loginUser %>`) {
-            loginInfo.innerHTML = '<div id="isLogin"><a><%= loginUser %> 님 환영합니다.</a><input type="button" value="로그아웃"></div>';
+            loginInfo.innerHTML = '<div id="isLogin"><a><%= loginUser %> 님 환영합니다.</a><input type="button" value="로그아웃" onclick="deleteSession()"></div>';
             login.setAttribute("class", "non");
             console.log(`<%= loginUser %>`);
             console.log(typeof(`<%= loginUser %>`));
+        }
+
+        async function deleteSession(){
+            console.log('delete req')
+            await axios ({
+                method: 'post',
+                url: '/deleteUser',
+            }).then((res) => {
+                console.log(res.data);
+                document.location.href = '/';
+            })
         }
     </script>
 </body>
