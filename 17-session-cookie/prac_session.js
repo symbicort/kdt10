@@ -53,6 +53,8 @@ app.post('/login', (req,res) => {
 })
 
 app.post('/deleteUser', (req,res) => {
+    console.log(req.session);
+    console.log(req.session.userid);
     req.session.destroy((err) => {
         if(err) {
             console.log(err);
