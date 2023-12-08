@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aws s3</title>
+    <!-- axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <form name="aws">
+        <input type="file" id="files" multiple> <br>
+        <button type="button" onclick="fileUpload()">업로드</button><br>
+        <!-- 업로드 되면 보여줄 곳 -->
+        <div class="result"></div>
+    </form>
+    <script>
+
+        const resultBox = document.querySelector('.result');
+    
+        async function fileUpload(){
+            const file = document.getElementById('files');
+            console.log(file.files)
+
+            const formData = new FormData();
+
+            for(let i = 0; i < file.files.length; i++){
+                formData.append('files', file.files[i]);
+
+            }
+            // axios
+            try{
+                const res = await axios({
+                    method: 'POST',
+                    url: '/upload',
+                    data: formData,
+                    headers : {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+                console.log('res to file upload', res.data.length);
+                for(let i = 0; i < res.data.length; i++) {
+                    const img = document.createElement('img');
+                    img.src = res.data.location;
+                    console.log('img upload try', res.data.location);
+                    resultBox.appendChild(img);
+                }
+            } catch(err){
+                console.log('err -> ',err);
+            }
+        }
+    </script>
+</body>
+</html>
