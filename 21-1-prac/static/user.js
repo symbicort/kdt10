@@ -68,7 +68,13 @@ function editProfile(){
             name: form.name.value
         }
     }).then((res) => {
-        alert(res.data.result);
+        if(res.data.editSuccess){
+            alert('정보 수정 완료');
+            // 쿠키를 HttpOnly로 설정한 예시
+            document.cookie = 'loginUser=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/user/profile;';
+
+            document.location.href = '/user';   
+        }
     })
 }
 

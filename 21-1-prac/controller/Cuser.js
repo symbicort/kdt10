@@ -31,9 +31,10 @@ exports.view_login = (req, res) => {
 }
 
 exports.view_profile = async (req,res) => {
-    const token = req.cookies.loginUser;
     try{
+        const token = req.cookies.loginUser;
         const decodedjwt = jwt.verify(token, process.env.JWT_SECRET_KEY)
+        console.log(decodedjwt);
         const userId = decodedjwt.userId;
 
         const user = await UserModel.findOne({
@@ -99,17 +100,34 @@ exports.login = async (req,res) => {
 }
 
 exports.user_edit = async (req,res) => {
-    const {id, pw, name} = req.body;
+    try{
+        const {userid, pw, name} = req.body;
+        const encrypw = hashPW(pw);
 
-    const editUser = await UserModel.update({User_pw: pw, User_name: name}, {where:{User_id:id}});
+        const editUser = await UserModel.update({User_pw: encrypw, User_name: name}, {where:{User_id:userid}});
 
-    console.log(editUser);
+        if(editUser) {
+            res.send({editSuccess:true});
+        } else{
+            res.send({editSuccess:false});
+        }
+    } catch(err){
+        console.error(err);
+    }
+
 
 }
 
 exports.user_delete = async (req,res) => {
-    const {id} = req.body;
-    const deleteUser = await UserModel.destroy({where: {User_id: id}});
+    console.log(req.body);
+    try{
+        const {userid} = req.body;
+        const deleteUser = await UserModel.destroy({where: {User_id: userid}});
 
-    console.log(deleteUser);
+        if(deleteUser == 1){
+            res.send({result: '유저 삭제 성공'});
+        }
+    } catch(err){
+        console.log(err);
+    }
 }
