@@ -16,7 +16,7 @@ app.get('/', (req,res) => {
     res.render('chat');
 });
 
-app.get('/prac2', (req,res) => {
+app.get('/prac', (req,res) => {
     res.render('chatBox');
 })
 
