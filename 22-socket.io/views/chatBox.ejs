@@ -5,60 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>chatBox prac</title>
     <script src="/socket.io/socket.io.js"></script>
-    <style>
-        #chatBox{
-            background-color: skyblue;
-            width: 300px;
-            height: 450px;
-            border: 1px;
-            display: flex;
-            align-items: flex-start;
-            position: relative;
-            box-sizing: border-box;
-            flex-direction: column;
-            border-radius: 2%;
-        }
-        #otherChat {
-            background-color: white;
-            position: relative;
-            padding: 10px;
-            margin-top: 7px;
-            margin-left: 3px;
-            font-size: 13px;
-            border-radius: 10px;
-            float: left;
-        }
-        #myChat {
-            background-color: yellow;
-            position: relative;
-            padding: 10px;
-            margin-top: 7px;
-            margin-left: 3px;
-            font-size: 13px;
-            border-radius: 10px;
-            left: 243px
-        }
-        input{
-            width: 180px;
-        }
-        .notice{
-            left: 50%;
+<style>
+  /* [실습2] 채팅창 UI */
+  .chatBox {
+    background-color: skyblue;
+    width: 50%;
+    height: 500px;
+    padding: 10px;
+    overflow-y: auto;
+  }
+
+  .chatBox div {
+    margin-top: 3px;
+  }
+
+  .chatBox div div {
+    display: inline-block;
+    padding: 7px;
+  }
+
+  .my-chat {
+    text-align: right;
+  }
+
+  .my-chat div {
+    background-color: yellow;
+    border-radius: 10px;
+    font-size: 13px;
+  }
+
+  .other-chat div {
+    background-color: white;
+    border-radius: 10px;
+    font-size: 13px;
+  }
+  .notice{
+            text-align: center;
             color: #005397;
             font-size: 12px;
         }
+</style>
     </style>
 </head>
 <body>
-    <div id="chatBox">
-        <div id="myChat">안녕?</div>
-        <div id="otherChat">응 안녕/</div>
+    <div class="chatBox">
+        <div class="my-chat">
+            <div>홍길동: 안녕?</div>
+        </div>
+        <div class="other-chat"> 
+            <div> 사용자1: 안녕? </div>
+        </div>
     </div><br>
     <input type="text" placeholder="내용 입력" id="content">
     <button onclick="inputChat()">전송</button>
 
     <script>
-        const chatBox = document.getElementById('chatBox');
-        const Chat = String(document.getElementById('content').value);
+        const chatBox = document.querySelector('.chatBox');
+
+        async function inputChat(){
+            const inputMsg = document.getElementById('content').value;
+            await socket.emit('send', {writer: '홍길동', msg: `${inputMsg}`});
+        };
 
         // 소켓 사용을 위한 객체 생성
         const socket = io.connect();
@@ -68,13 +75,12 @@
         });
 
         socket.on('notice', (msg) => {
-            document.getElementById('chatBox').insertAdjacentHTML('beforeend', `<div class='notice'>${msg}</div>`);
+            chatBox.insertAdjacentHTML('beforeend', `<div class='notice'>${msg}</div>`);
         })
 
-        function inputChat(){
-            socket.emit('send', {writer: 'client', msg: 'hello'});
-        };
-
+        socket.on('view-chat', (data) => {
+            chatBox.insertAdjacentHTML('beforeend',`<div class="my-chat"><div> ${data.who}: ${data.msg} </div></div>` )
+        })
 
     </script>
 </body>

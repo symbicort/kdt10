@@ -48,7 +48,9 @@ io.on('connection', (socket) => {
 
     // 채팅창 입장 안내 문구
     socket.on('send', (data) => {
-        console.log(`writer : ${socket.id}`);
+        console.log(`${data.writer}, ${data.msg}`);
+
+        io.emit('view-chat',{who: `${data.writer}`, msg: `${data.msg}`})
     })
     
     io.emit('notice', `${socket.id} 님이 입장하셨습니다.`);
