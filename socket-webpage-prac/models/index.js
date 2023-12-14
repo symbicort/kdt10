@@ -2,14 +2,14 @@ const Sequelize = require('sequelize');
 const config = require(__dirname + '/../config/config.json')['development'];
 const db = {};
 
-console.log(config)
-
 const sequelize = new Sequelize(
     config.database,
     config.username,
     config.password,
     config
 );
+
+
 
 // TODO: 모델 모듈 불러오기
 const UserModel = require('./user')(sequelize, Sequelize);
