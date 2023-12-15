@@ -1,7 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
-const {connectToDatabase} = require('./utils/db_connect');
+const connect = require('./model/index');
+const bodyParser = require('body-parser');
 
 dotenv.config();
 
@@ -13,6 +14,8 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use('/static', express.static(__dirname + '/static'));
 app.use('/utils', express.static(__dirname + '/utils'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 const userRouter = require('./routes/user');
 app.use('/user', userRouter);
@@ -21,14 +24,9 @@ app.get('*', (req, res) => {
     res.render('404');
 })
 
-connectToDatabase()
-    .then(() => {
+connect();
 
-    app.listen(PORT, () => {
-        console.log(`Server is running on http://localhost:${PORT}`);
-    });
-    }).catch((err) => {
-    console.error('Error connecting to MongoDB:', err.message);
-
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
 

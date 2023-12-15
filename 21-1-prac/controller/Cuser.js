@@ -64,7 +64,7 @@ exports.signup = async (req,res) => {
         console.log(newUser);
         res.send(newUser);
     } catch (err) {
-        console.error('유저 생성 중 오류', err);
+        console.error('유저 생성 중 오류', err.code);
     }
 }
 

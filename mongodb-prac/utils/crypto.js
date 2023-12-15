@@ -10,6 +10,7 @@ function hashPW(password) {
 
 // 2. 원본 비밀번호와 해시된 비밀번호가 일치하는지 확인하는 함수(같은지, 다른지만 알려줌)
 function comparePW(password, hashedPW){
+    console.log(hashedPW);
     return bcrypt.compareSync(password, hashedPW)
 }
 
