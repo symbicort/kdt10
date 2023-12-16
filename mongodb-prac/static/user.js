@@ -20,7 +20,18 @@ async function signUp(){
             address: form.address.value
         }
     }).then((res) => {
-        console.log(res.data);
+        const result = res.data.existUser;
+        console.log(result);
+        if(!result) {
+            alert('회원가입 성공');
+            document.location.href = '/user';
+        } else {
+            form.id.value = '';
+            form.pw.value = '';
+            form.nickname.value = '';
+            form.address.value = '';
+            alert('중복된 아이디입니다 다시 입력해주세요');
+        }
     })
 }
 
@@ -39,16 +50,8 @@ async function tryLogin(){
             userpw: form.pw.value
         }
     }).then((res) => {
-        const result = res.data.result;
-        console.log(result);
-        if(result) {
-            alert('로그인 성공');
-            document.location.href = '/user';
-        } else {
-            form.id.value = null;
-            form.pw.value = null;
-            alert('로그인 실패');
-        }
+        console.log(res);
+        document.location.href = '/user'
     })
 }
 
@@ -70,7 +73,7 @@ axios({
 }).then((res) => {
     if(res.data.editSuccess){
         alert('정보 수정 완료');
-        // 쿠키를 HttpOnly로 설정한 예시
+
         document.cookie = 'loginUser=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/user/profile;';
 
         document.location.href = '/user';   

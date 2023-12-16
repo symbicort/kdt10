@@ -3,7 +3,22 @@ const { hashPW, comparePW } = require('../utils/crypto');
 const jwt = require('jsonwebtoken');
 
 exports.main = (req, res) => {
-    res.render('main'); 
+    console.log('req.cookie', req.cookie)
+    const token = req.cookies.loginUser;
+    console.log(token);
+    if(!token){
+        res.render('user', {userid: undefined});
+    } else{
+        try{
+            const decodedjwt = jwt.verify(token, process.env.JWT_SECRET_KEY)
+
+            const userId = decodedjwt.userId;
+
+            res.render('main', {userid: userId});
+        } catch(err) {
+            console.error('메인 페이지 랜딩 에러', err);
+        }
+    }
 }
 
 exports.view_signup = (req,res) => {
@@ -63,12 +78,14 @@ exports.login = async (req, res) => {
     console.log(req.body);
     try {
         const { userid, userpw } = req.body;
+        console.log(userid, userpw);
         const user = await userModel.findOne({ userid: userid }).exec();
 
-        console.log('Users with userid "test":', user.pw, hashPW(userpw));
+        console.log('Users:', user);
 
-        if (user && user.length > 0) {
+        if (user) {
             const isPasswordMatch = await comparePW(userpw, user.pw);
+            console.log(isPasswordMatch);
 
             if (isPasswordMatch) {
                 const token = jwt.sign({ userId: userid }, process.env.JWT_SECRET_KEY, { expiresIn: '2h' });
@@ -85,7 +102,6 @@ exports.login = async (req, res) => {
         console.error(err);
     }
 };
-
 
 exports.user_edit = async (req,res) => {
     try{
