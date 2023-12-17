@@ -18,9 +18,13 @@ app.use('/utils', express.static(__dirname + '/utils'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(express.json());
 
 const userRouter = require('./routes/user');
 app.use('/user', userRouter);
+
+// const postRouter = require('./routes/port');
+// app.use('/post', postRouter);
 
 app.get('*', (req, res) => {
     res.render('404');

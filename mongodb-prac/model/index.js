@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connect = () => {
     mongoose.connect(process.env.mongodb_connect_url, {
-        dbName: 'user_data',
+        dbName: 'jumbbang_data',
     }, (error) => {
     if (error) {
             console.log('몽고디비 연결 에러', error);

@@ -12,16 +12,25 @@
         input {
             width: 185px;
         }
+        img{
+            width: 300px;
+            height: 300px;
+        }
     </style>
 </head>
 <body>
     <h1>회원 정보</h1>
     <a href="/user">HOME</a><br><br>
     <span>ID 수정 불가, name,password 수정 가능</span><hr>
+        
+    <img src="" alt="default" id="profile">
     <form name="profile">
         ID <input type="text" name="id" value="" readonly><br>
         PW <input type="password" name="pw" placeholder="암호화 되어 확인 불가(수정만 가능)"><br>
-        Name <input type="text" name="name"><hr>
+        닉네임 <input type="text" name="nickname"><br>
+        주소 <input type="text" name="address"><hr>
+        프로필 이미지 등록 <input type="file" name="profileImg"><br>
+        <button type="button" onclick="profileImgUpload()">프로필 이미지 등록</button><br>
         <button type="button" onclick="editProfile()">정보 수정</button>
         <button type="button" onclick="deleteProfile()">유저 삭제</button>
     </form>
@@ -30,7 +39,9 @@
         const form = document.forms['profile'];
 
         form.id.value = `<%= userid %>`;
-        form.name.value = `<%= username %>`;
+        form.nickname.value = `<%= username %>`;
+        form.address.value = `<%= address %>`
+        document.getElementById('profile').src = `<%= image %>`
 
     </script>
 </body>

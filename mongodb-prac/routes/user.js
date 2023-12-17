@@ -8,14 +8,18 @@ router.get('/signup', controller.view_signup);
 
 router.get('/login', controller.view_login);
 
-router.get('/profile', controller.view_profile)
+router.get('/profile', controller.view_profile);
 
 router.post('/signup', controller.signup);
 
 router.post('/login', controller.login);
 
-// router.patch('/edit', controller.user_edit);
+router.post('/profile/upload', controller.ImageUpload);
 
-// router.delete('/delete', controller.user_delete)
+router.patch('/profile/img_edit', controller.profile_image_edit);
+
+router.patch('/profile/edit', controller.user_edit);
+
+router.delete('/profile/delete', controller.user_delete);
 
 module.exports = router;

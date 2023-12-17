@@ -55,28 +55,74 @@ async function tryLogin(){
     })
 }
 
+async function profileImgUpload(){
+    try{
+        const form = document.forms['profile'];
+        const file = form.profileImg;
+        const userId = form.id.value;
+
+        console.log(file);
+        const currentImgsrc = document.getElementById('profile').getAttribute('src');
+
+        let uploadImgUrl = '';
+
+        const formData = new FormData();
+        formData.append('files', file.files[0]); 
+
+        await axios({
+            method: 'post',
+            url: '/user/profile/upload',
+            data: formData,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then((res) => {
+            if(res.data[0] != undefined){
+                uploadImgUrl = res.data[0].location;
+                axios({
+                    method: 'patch',
+                    url: '/user/profile/img_edit',
+                    data: {
+                        user_id: userId,
+                        uploadImgurl: uploadImgUrl,
+                        currentImgsrc: currentImgsrc
+                    }
+                }).then((res) => {
+                    location.reload(true);
+                })
+            }
+        })    
+    } catch(err){
+        console.error(err);
+    }
+
+}
+
 function editProfile(){
 const form = document.forms['profile'];
-if (form.pw.value.length === 0 || form.name.value.length === 0) {
-    alert('정보를 제대로 기입해주세요');
+if (form.pw.value.length === 0) {
+    alert('정보를 변경할 경우 비밀번호 재입력이 필요합니다.');
     return;
 }
 
 axios({
     method: 'PATCH',
-    url: '/user/edit',
+    url: '/user/profile/edit',
     data: {
-        userid: form.id.value,
+        id: form.id.value,
         pw: form.pw.value,
-        name: form.name.value
+        name: form.nickname.value,
+        addr: form.address.value
     }
 }).then((res) => {
     if(res.data.editSuccess){
         alert('정보 수정 완료');
 
-        document.cookie = 'loginUser=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/user/profile;';
+        document.cookie = 'loginUser=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 
         document.location.href = '/user';   
+    } else{
+        alert('fail');
     }
 })
 }
@@ -86,7 +132,7 @@ const form = document.forms['profile'];
 
 axios({
     method: 'DELETE',
-    url: '/user/delete',
+    url: '/user/profile/delete',
     data: {
         userid: form.id.value
     }
