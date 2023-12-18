@@ -61,13 +61,13 @@ exports.view_profile = async (req,res) => {
                 res.render('main', {userid: userId});
             } catch(err) {
                 console.error('메인 페이지 랜딩 에러', err);
-            
             }
         }
     }
 }
 
 exports.signup = async (req,res) => {
+
     try{
         const {userid, userpw, nickname, address} = req.body;
         const User_pw = hashPW(userpw);

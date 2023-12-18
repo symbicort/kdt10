@@ -24,7 +24,7 @@ const userRouter = require('./routes/user');
 app.use('/user', userRouter);
 
 const marketRouter = require('./routes/market');
-app.use('/', marketRouter);  
+app.use('/market', marketRouter);  
 
 app.get('*', (req, res) => {
     res.render('404');

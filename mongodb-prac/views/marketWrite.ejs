@@ -16,7 +16,7 @@
 			<%- include('./component/header') %>
 			<main class="container marketWrite">
 				<h1 class="h2 fw-bold">등록</h1>
-				<form class="needs-validation mt-3" novalidate>
+				<form class="needs-validation mt-3" novalidate name="marketWrite">
 					<input type="text" name="writerId" id="writerId" hidden />
 					<div class="row g-3">
 						<div class="">
@@ -94,19 +94,19 @@
 						</div>
 						<div class="col">
 							<label for="image" class="form-label">상품 이미지(최소 1개 필요)</label>
-							<input type="file" class="form-control" name="image" id="image" placeholder="" required="" multiple />
+							<input type="file" class="form-control" name="images" id="image" placeholder="" required="" multiple />
 							<div class="invalid-feedback">이미지는 필수 입니다</div>
 						</div>
 					</div>
 					<hr class="my-4" />
 
-					<button class="w-100 btn-primary btn-lg" type="submit" id="addpost">등록</button>
+					<button class="w-100 btn-primary btn-lg" type="submit"  onclick="addpost()">등록</button>
 				</form>
 			</main>
 			<%- include('./component/footer') %>
 		</div>
 
-		<script src="/static/js/market.js"></script>
+		<script src="../static/js/market.js"></script>
 		<script>
 			(() => {
 				'use strict';

@@ -60,4 +60,37 @@ const productData = {
 	priceLast: 195000,
 	priceDirect: 300000,
 };
-async function addpost(){}
+
+
+async function addpost(){
+	const form = document.forms['marketWrite'];
+
+	let formData = new FormData();
+
+	formData.append("subject", form.subject.value);
+	formData.append("comment", form.comment.value);
+	formData.append("state", form.state.value);
+	formData.append("priceFirst", form.priceFirst.value);
+	formData.append("priceDirect", form.priceDirect.value);
+	formData.append("dateLimit", form.dateLimit.value);
+	console.log(form.images);
+
+	for (let i = 0; i < form.images.length; i++) {
+        formData.append('files', form.images[i]);
+    }
+
+	await axios({
+        method: 'POST',
+        url: '/market/write',
+        data: formData,
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    }).then((res) => {
+		const result = console.log(res.status);
+		if(result){
+			alert('게시물 작성이 완료되었습니ㅏㄷ.')
+			document.location.href = '/market'
+		}
+    })
+}

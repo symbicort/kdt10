@@ -1,14 +1,14 @@
 async function signUp(){
     const form = document.forms['signup'];
-    if (form.id.value.length === 0 || form.nickname.value.length === 0 || form.pw.value.length === 0 || form.address.value.length === 0) {
-        alert('정보를 모두 기입해주세요');
-        return;
-    }
+    // if (form.id.value.length === 0 || form.nickname.value.length === 0 || form.pw.value.length === 0 || form.address.value.length === 0) {
+    //     alert('정보를 모두 기입해주세요');
+    //     return;
+    // }
 
-    if (form.nickname.value.length > 10) {
-        alert('이름은 10글자 미만입니다!');
-        return;
-    }
+    // if (form.nickname.value.length > 10) {
+    //     alert('이름은 10글자 미만입니다!');
+    //     return;
+    // }
 
     await axios({
         method: 'POST',

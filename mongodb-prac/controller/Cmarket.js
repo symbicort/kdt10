@@ -13,3 +13,8 @@ exports.getView = (req, res) => {
 exports.getWrite = (req, res) => {
 	res.render('marketWrite');
 };
+
+exports.addPost = async (req,res) => {
+    console.log(req.files);
+    console.log(req.body);
+}
