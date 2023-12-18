@@ -23,8 +23,8 @@ app.use(express.json());
 const userRouter = require('./routes/user');
 app.use('/user', userRouter);
 
-// const postRouter = require('./routes/port');
-// app.use('/post', postRouter);
+const marketRouter = require('./routes/market');
+app.use('/', marketRouter);  
 
 app.get('*', (req, res) => {
     res.render('404');

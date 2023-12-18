@@ -168,8 +168,7 @@ exports.ImageUpload = async (req, res) => {
         }
         console.log('파일 등록 req', req.files.location);
         res.send(req.files);
-    });
-    
+    });  
 };
 
 exports.profile_image_edit = (req, res) => {
