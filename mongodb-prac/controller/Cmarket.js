@@ -1,4 +1,6 @@
-//const Comment = require('../models/Cproduct');
+const marketModel = require('../model/market');
+const {upload, deleteProfileImg} = require('./CimgUploader');
+
 
 exports.market = (req, res) => {
 	res.render('market');
