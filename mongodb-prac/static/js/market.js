@@ -60,4 +60,4 @@ const productData = {
 	priceLast: 195000,
 	priceDirect: 300000,
 };
-function btnBid() {}
+async function addpost(){}
