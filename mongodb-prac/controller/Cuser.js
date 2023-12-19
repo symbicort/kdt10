@@ -4,9 +4,7 @@ const jwt = require('jsonwebtoken');
 const {upload, deleteProfileImg} = require('./CimgUploader');
 
 exports.main = (req, res) => {
-    console.log('req.cookie', req.cookie)
     const token = req.cookies.loginUser;
-    console.log(token);
     if(!token){
         res.render('main', {userid: undefined});
     } else{
@@ -18,7 +16,6 @@ exports.main = (req, res) => {
             res.render('main', {userid: userId});
         } catch(err) {
             console.error('메인 페이지 랜딩 에러', err);
-        
         }
     }
 }
@@ -67,7 +64,6 @@ exports.view_profile = async (req,res) => {
 }
 
 exports.signup = async (req,res) => {
-
     try{
         const {userid, userpw, nickname, address} = req.body;
         const User_pw = hashPW(userpw);
@@ -90,7 +86,6 @@ exports.signup = async (req,res) => {
         }
     }
 }
-
 
 exports.login = async (req, res) => {
     console.log(req.body);

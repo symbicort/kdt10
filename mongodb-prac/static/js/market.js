@@ -61,22 +61,23 @@ const productData = {
 	priceDirect: 300000,
 };
 
-
 async function addpost(){
 	const form = document.forms['marketWrite'];
+
+	const image = document.getElementById('image');
 
 	let formData = new FormData();
 
 	formData.append("subject", form.subject.value);
 	formData.append("comment", form.comment.value);
+	formData.append("category", form.category.value)
 	formData.append("state", form.state.value);
 	formData.append("priceFirst", form.priceFirst.value);
 	formData.append("priceDirect", form.priceDirect.value);
 	formData.append("dateLimit", form.dateLimit.value);
-	console.log(form.images);
 
-	for (let i = 0; i < form.images.length; i++) {
-        formData.append('files', form.images[i]);
+	for (let i = 0; i < image.files.length; i++) {
+        formData.append('files', image.files[i]);
     }
 
 	await axios({
@@ -87,9 +88,9 @@ async function addpost(){
             'Content-Type': 'multipart/form-data'
         }
     }).then((res) => {
-		const result = console.log(res.status);
-		if(result){
-			alert('게시물 작성이 완료되었습니ㅏㄷ.')
+		console.log(res);
+		if(res){
+			alert('게시물 작성이 완료되었습니다.')
 			document.location.href = '/market'
 		}
     })

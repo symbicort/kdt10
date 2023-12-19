@@ -45,6 +45,20 @@
 							<div class="invalid-feedback">상품 설명은 필수 입니다</div>
 						</div>
 						<div class="">
+							<label for="state" class="form-label">카테고리</label>
+							<select class="form-select" id="category" name="category">
+								<option value="1">패션</option>
+								<option value="2">뷰티</option>
+								<option value="3">가전</option>
+								<option value="4">모바일/태블릿</option>
+								<option value="5">가구/가전</option>
+								<option value="6">반려동물/취미</option>
+								<option value="7">티켓/쿠폰</option>
+								<option value="8">스포츠/레저</option>
+								<option value="9">나눔</option>
+							</select>
+						</div>
+						<div class="">
 							<label for="state" class="form-label">거래 방식</label>
 							<select class="form-select" id="state" name="state">
 								<option value="1">판매중</option>
@@ -94,13 +108,13 @@
 						</div>
 						<div class="col">
 							<label for="image" class="form-label">상품 이미지(최소 1개 필요)</label>
-							<input type="file" class="form-control" name="images" id="image" placeholder="" required="" multiple />
+							<input type="file" class="form-control" name="image" id="image" placeholder="" required="" multiple />
 							<div class="invalid-feedback">이미지는 필수 입니다</div>
 						</div>
 					</div>
 					<hr class="my-4" />
 
-					<button class="w-100 btn-primary btn-lg" type="submit"  onclick="addpost()">등록</button>
+					<button class="w-100 btn-primary btn-lg" type="button"  onclick="addpost()">등록</button>
 				</form>
 			</main>
 			<%- include('./component/footer') %>
@@ -123,10 +137,8 @@
 								event.preventDefault();
 								event.stopPropagation();
 							}
-
 							form.classList.add('was-validated');
 						},
-						false
 					);
 				});
 			})();

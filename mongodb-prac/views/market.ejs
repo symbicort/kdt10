@@ -407,11 +407,17 @@
 						</section>
 					</section>
 				</div>
-
+				<div>
+					<%= postData[0]._id %>
+					<%= postData %>
+				</div>
 				<%- include('./component/marketFooter') %>
 			</main>
 			<%- include('./component/footer') %>
 		</div>
 		<script src="/static/js/market.js"></script>
+		<script>
+			console.log(`<%= postData %>`)
+		</script>
 	</body>
 </html>

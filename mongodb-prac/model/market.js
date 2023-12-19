@@ -4,12 +4,14 @@ const { Schema } = mongoose;
 const marketSchema = new Schema({
     userid: {
         type: String,
-        // required: true, // null 여부
-        // unique: true, // 유니크 여부
     },
     category: {
-        type: String, // Int32가 아니다. 기본 자바스크립트에는 존재하지 않으니 넘버로 해줘야 한다.
+        type: String,
         required: true,
+    },
+    state:{
+        type: Number,
+        default: 1
     },
     subject: {
         type: String,
@@ -39,32 +41,21 @@ const marketSchema = new Schema({
         required: true,
         default: 1
     },
+    hit: {
+        type: Number,
+        required: true,
+        default: 0
+    },
     bookmark_hit: {
         type: Number,
         required: true,
         default: 0
     },
-    image1: {
-        type: String
-    },
-    image2: {
-        type: String
-    },
-    image3: {
-        type: String
-    },
-    image4: {
-        type: String
-    },
-    image5: {
-        type: String
-    },
-    createAt: {
-        type: Date
-    },
-    updateAt: {
-        type: Date
+    images: {
+        type: [String]
     }
+}, {
+    timestamps: true 
 });
 
 module.exports = mongoose.model('market', marketSchema);
