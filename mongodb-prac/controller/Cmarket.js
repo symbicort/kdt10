@@ -15,8 +15,18 @@ exports.market = async (req, res) => {
 };
 
 exports.getView = async (req, res) => {
-    console.log(req.params);
-	res.render('marketView');
+    const postid = req.params.id;
+    console.log(postid);
+    
+    const marketObejct = marketModel.find({ _id: postid })
+    .exec().then((result) => {
+        console.log('Found data:', {postData: result});
+        if(result){
+            res.render('marketView', {postData: result});
+        }
+    }).catch((error) => {
+        console.error('Error finding data:', error);
+    });
 };
 
 exports.getWrite = async (req, res) => {
