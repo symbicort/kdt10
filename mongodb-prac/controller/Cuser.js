@@ -1,20 +1,26 @@
 const userModel = require('../model/user');
 const { hashPW, comparePW } = require('../utils/crypto');
-const jwt = require('jsonwebtoken');
 const {upload, deleteProfileImg} = require('./CimgUploader');
+const { makeToken, makeRefreshToken, verifyToken } = require('../utils/token')
 
-exports.main = (req, res) => {
-    const token = req.cookies.loginUser;
+exports.main = async (req, res) => {
+    const token = req.cookies.AccessToken;
+    const refreshToken = req.cookies.refreshToken;
+    console.log('쿠키 데이터', token, refreshToken)
+
     if(!token){
         res.render('main', {userid: undefined});
     } else{
         try{
-            const decodedjwt = jwt.verify(token, process.env.JWT_SECRET_KEY)
+            const decodedjwt = await verifyToken(token, refreshToken) ;
 
-            const userId = decodedjwt.userId;
+            console.log('토큰 확인 결과', decodedjwt);
 
-            res.render('main', {userid: userId});
+            res.render('main', {userid: decodedjwt.userid});
         } catch(err) {
+            if(err.name === 'TokenExpiredError'){
+                res.render('main', {userid: undefined});
+            }
             console.error('메인 페이지 랜딩 에러', err);
         }
     }
@@ -101,9 +107,10 @@ exports.login = async (req, res) => {
             console.log(isPasswordMatch);
 
             if (isPasswordMatch) {
-                const token = jwt.sign({ userId: userid }, process.env.JWT_SECRET_KEY, { expiresIn: '2h' });
-                console.log(token);
-                res.cookie('loginUser', token, { maxAge: 7200000, httpOnly: true });
+                const token = makeToken(userid);
+                const refreshToken = makeRefreshToken(userid)
+                res.cookie('AccessToken', token, { maxAge: 7200000, httpOnly: true });
+                res.cookie('refreshToken', refreshToken, { maxAge: 7200000, httpOnly: true });
                 res.send({ result: true });
             } else {
                 res.send({ result: false });
