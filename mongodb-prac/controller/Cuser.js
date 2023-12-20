@@ -122,8 +122,6 @@ exports.user_edit = async (req,res) => {
         console.log(id, pw, name, addr);
         const encrypw = hashPW(pw);
 
-        // const editUser = await userModel.updateOne({pw: encrypw, nick: name, address: addr}, {where:{User_id:userid}});
-
         const editUser = await userModel.updateOne({userid:id}, {pw: encrypw, nick: name, address: addr});
 
         console.log('유저 수정 요청 정보', editUser.acknowledged);

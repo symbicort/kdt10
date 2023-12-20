@@ -18,12 +18,10 @@ exports.getView = async (req, res) => {
     const postid = req.params.id;
     console.log(postid);
     
-    const marketObejct = marketModel.find({ _id: postid })
+    marketModel.find({ _id: postid })
     .exec().then((result) => {
-        console.log('Found data:', {postData: result});
-        if(result){
-            res.render('marketView', {postData: result});
-        }
+        const getViewData = result[0];
+        console.log('Found data:', getViewData);
     }).catch((error) => {
         console.error('Error finding data:', error);
     });
