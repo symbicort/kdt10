@@ -5,7 +5,7 @@ const { makeToken, makeRefreshToken, verifyToken } = require('../utils/token')
 
 exports.main = async (req, res) => {
     const token = req.cookies.AccessToken;
-    const refreshToken = req.cookies.refreshToken;
+    const refreshToken = req.cookies;
     console.log('쿠키 데이터', token, refreshToken)
 
     if(!token){
@@ -110,7 +110,7 @@ exports.login = async (req, res) => {
                 const token = makeToken(userid);
                 const refreshToken = makeRefreshToken(userid)
                 res.cookie('AccessToken', token, { maxAge: 7200000, httpOnly: true });
-                res.cookie('refreshToken', refreshToken, { maxAge: 7200000, httpOnly: true });
+                res.cookie('refreshToken', refreshToken, { maxAge: 604800000, httpOnly: true });
                 res.send({ result: true });
             } else {
                 res.send({ result: false });

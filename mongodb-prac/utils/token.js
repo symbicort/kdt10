@@ -6,14 +6,14 @@ const makeToken = (userid) => {
     return token;
 };
 
-const makeRefreshToken = async (userid) => {
+const makeRefreshToken = (userid) => {
     try {
         const refreshToken = jwt.sign({refreshToken: 'refreshToken'}, process.env.JWT_SECRET_KEY, {
             algorithm: "HS256",
             expiresIn: "7d",
         });
 
-        const result = await tokenModel.updateOne(
+        const result = tokenModel.updateOne(
             { user_id: userid },
             { user_id: userid, refreshToken: refreshToken },
             { upsert: true }
