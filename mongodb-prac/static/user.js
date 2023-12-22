@@ -17,6 +17,8 @@ async function signUp(){
             userid: form.id.value,
             userpw: form.pw.value,
             nickname: form.nickname.value,
+            email: form.email.value,
+            contact: form.contact.value,
             address: form.address.value
         }
     }).then((res) => {

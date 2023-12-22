@@ -63,12 +63,14 @@ exports.view_profile = async (req,res) => {
 
 exports.signup = async (req,res) => {
     try{
-        const {userid, userpw, nickname, address} = req.body;
+        const {userid, userpw, nickname, email,contact,address} = req.body;
         const User_pw = hashPW(userpw);
         await userModel.create({
             userid: userid,
             pw : User_pw,
             nick: nickname,
+            email: email,
+            contact: contact,
             address: address,
             image: ''
         }).then((newUser) => {

@@ -3,13 +3,14 @@ const mongoose = require('mongoose');
 const connect = () => {
     mongoose.connect(process.env.mongodb_connect_url, {
         dbName: 'jumbbang_data',
-    }, (error) => {
-    if (error) {
+    })
+        .then(() => {
+            console.log('몽고디비 연결 성공');
+        })
+        .catch((error) => {
             console.log('몽고디비 연결 에러', error);
-    } else {
-        console.log('몽고디비 연결 성공');
-    }
-    });
+        });
+    
 };
 
 mongoose.connection.on('error', (error) => {
