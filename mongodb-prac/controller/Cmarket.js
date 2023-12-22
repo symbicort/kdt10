@@ -1,7 +1,8 @@
-const { ListDirectoryBucketsCommand } = require('@aws-sdk/client-s3');
 const marketModel = require('../model/market');
 const {postUpload, deleteProfileImg} = require('./CimgUploader');
 const jwt = require('jsonwebtoken');
+
+const {verifyToken } = require('../utils/token')
 
 exports.market = async (req, res) => {
     marketModel.find()
@@ -28,12 +29,18 @@ exports.getView = async (req, res) => {
 };
 
 exports.getWrite = async (req, res) => {
-    const token = req.cookies.loginUser;
+    try{
+        const token = req.cookies.accessToken;
+        const reftoken = req.cookies.refreshToken;
+        const decodedjwt = await verifyToken(token, reftoken) ;
 
-    if(token){
-        res.render('marketWrite');
-    } else{
-        res.render('login')
+        if(decodedjwt.token == undefined){
+            res.render('login');
+        } else {
+            res.render('marketWrite');
+        }
+    } catch(err) {
+        console.error(err)
     }
 };
 

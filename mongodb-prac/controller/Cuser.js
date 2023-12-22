@@ -4,9 +4,8 @@ const {upload, deleteProfileImg} = require('./CimgUploader');
 const { makeToken, makeRefreshToken, verifyToken } = require('../utils/token')
 
 exports.main = async (req, res) => {
-    const token = req.cookies.AccessToken;
-    const refreshToken = req.cookies;
-    console.log('쿠키 데이터', token, refreshToken)
+    const token = req.cookies.accessToken;
+    const refreshToken = req.cookies.refreshToken;
 
     if(!token){
         res.render('main', {userid: undefined});
@@ -14,13 +13,14 @@ exports.main = async (req, res) => {
         try{
             const decodedjwt = await verifyToken(token, refreshToken) ;
 
-            console.log('토큰 확인 결과', decodedjwt);
-
-            res.render('main', {userid: decodedjwt.userid});
-        } catch(err) {
-            if(err.name === 'TokenExpiredError'){
-                res.render('main', {userid: undefined});
+            if(decodedjwt.token != undefined){
+                res.render('main', {userid: decodedjwt.userid});
+            } else{
+                alert('재 로그인을 진행해주세요');
+                res.render('login');
             }
+            
+        } catch(err) {
             console.error('메인 페이지 랜딩 에러', err);
         }
     }
@@ -36,36 +36,28 @@ exports.view_login = (req, res) => {
 
 exports.view_profile = async (req,res) => {
     try{
-        const token = req.cookies.loginUser;
-        const decodedjwt = jwt.verify(token, process.env.JWT_SECRET_KEY)
-        console.log(decodedjwt);
-        const userId = decodedjwt.userId;
+        const token = req.cookies.accessToken;
+        const reftoken = req.cookies.refreshToken;
+        const decodedjwt = await verifyToken(token, reftoken) ;
 
-        const user = await userModel.findOne({ userid: userId }).exec();
+        if(decodedjwt.token == undefined){
+            alert('재 로그인을 진행해주세요');
+            res.render('login');
+        } else {
+            const user_id = decodedjwt.userid;
 
-        console.log('user 정보', user)
-        const userid = user.userid;
-        const username = user.nick;
-        const address = user.address;
-        const image = user.image;
+            const user = await userModel.findOne({ userid: user_id }).exec();
 
-        res.render('profile', {userid, username, address, image})
+            console.log('user 정보', user);
+            const userid = user.userid;
+            const username = user.nick;
+            const address = user.address;
+            const image = user.image;
 
-    } catch(err) {
-        const token = req.cookies.loginUser;
-        if(!token){
-            res.render('main', {userid: undefined});
-        } else{
-            try{
-                const decodedjwt = jwt.verify(token, process.env.JWT_SECRET_KEY)
-
-                const userId = decodedjwt.userId;
-
-                res.render('main', {userid: userId});
-            } catch(err) {
-                console.error('메인 페이지 랜딩 에러', err);
-            }
+            res.render('profile', {userid, username, address, image})
         }
+    } catch(err) {
+        console.error(err);
     }
 }
 
@@ -102,14 +94,15 @@ exports.login = async (req, res) => {
 
         console.log('Users:', user);
 
-        if (user) {
-            const isPasswordMatch = await comparePW(userpw, user.pw);
+        if (user) { 
+            const isPasswordMatch = comparePW(userpw, user.pw);
             console.log(isPasswordMatch);
 
             if (isPasswordMatch) {
                 const token = makeToken(userid);
-                const refreshToken = makeRefreshToken(userid)
-                res.cookie('AccessToken', token, { maxAge: 7200000, httpOnly: true });
+                const refreshToken = makeRefreshToken(userid);
+                console.log('토큰 생성 정보', token, refreshToken)
+                res.cookie('accessToken', token, { maxAge: 7200000, httpOnly: true });
                 res.cookie('refreshToken', refreshToken, { maxAge: 604800000, httpOnly: true });
                 res.send({ result: true });
             } else {
