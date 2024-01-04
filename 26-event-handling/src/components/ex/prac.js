@@ -25,23 +25,11 @@ function Prac() {
   };
 
   const backgC = (e) => {
-    if (e.target.value === 'red') {
-      setBack('red');
-    } else if (e.target.value === 'blue') {
-      setBack('blue');
-    } else if (e.target.value === 'yellow') {
-      setBack('yellow');
-    }
+    setBack(e.target.value);
   };
 
   const textColor = (e) => {
-    if (e.target.value === 'red') {
-      setTextC('red');
-    } else if (e.target.value === 'blue') {
-      setTextC('blue');
-    } else if (e.target.value === 'yellow') {
-      setTextC('yellow');
-    }
+    setTextC(e.target.value);
   };
 
   const viewMessage = (e) => {
@@ -62,12 +50,18 @@ function Prac() {
           <option value="red">빨강</option>
           <option value="blue">파랑</option>
           <option value="yellow">노랑</option>
+          <option value="orange">주황</option>
+          <option value="black">검정</option>
+          <option value="white">하양</option>
         </select>
         글자색 :
         <select onChange={textColor}>
           <option value="red">빨강</option>
           <option value="blue">파랑</option>
           <option value="yellow">노랑</option>
+          <option value="orange">주황</option>
+          <option value="black">검정</option>
+          <option value="white">하양</option>
         </select>
         <br />
         <br />
