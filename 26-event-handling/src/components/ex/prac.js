@@ -25,6 +25,7 @@ function Prac() {
   };
 
   const backgC = (e) => {
+    console.log(e.target);
     setBack(e.target.value);
   };
 
