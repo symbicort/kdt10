@@ -82,8 +82,8 @@ $color-yellow: yellow;
 $color-green: green;
 
 @mixin circle($color) {
-  width: 75px;
-  height: 75px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   background-color: $color;
 }
@@ -141,4 +141,39 @@ $color-green: green;
       animation-name: greenAnim;
     }
   }
+}
+
+$primaryColor: #97cbee;
+$accentColor: #3498db;
+$lightBlueColor: lightblue;
+$backgroundColor: #f5f5f5;
+
+.post-list-title {
+  text-align: center;
+  background-color: $primaryColor;
+  color: white;
+  padding: 10px;
+  margin: 0;
+}
+
+.loading-box,
+.item-box {
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid $accentColor;
+}
+
+.loading-box {
+  background-color: $lightBlueColor;
+}
+
+.item-box {
+  background-color: $backgroundColor;
+}
+
+.item-header {
+  background-color: $accentColor;
+  color: white;
+  padding: 5px;
+  margin-bottom: 5px;
 }

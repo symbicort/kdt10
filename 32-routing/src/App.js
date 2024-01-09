@@ -1,10 +1,10 @@
 import './App.css';
-import PostList from './PostList';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <PostList />
+      <BrowserRouter></BrowserRouter>
     </div>
   );
 }
