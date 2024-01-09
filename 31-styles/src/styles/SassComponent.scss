@@ -1,0 +1,144 @@
+$color-blue500: rgb(0, 0, 166);
+$color-blue400: rgb(36, 61, 206);
+$color-blue300: rgb(52, 118, 231);
+$color-blue200: rgb(47, 146, 233);
+$color-blue100: rgb(140, 191, 253);
+
+@mixin rounded() {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+@mixin position($topOffset, $leftOffset) {
+  top: 100px + $topOffset;
+  left: 100px + $leftOffset;
+}
+
+@mixin eye($w, $h, $color) {
+  width: $w;
+  height: $h;
+  background-color: $color;
+  position: relative;
+}
+
+.larva {
+  position: relative;
+  .body {
+    @include rounded();
+    position: absolute;
+
+    &.body1 {
+      @include position(0, 0);
+      background-color: $color-blue500;
+
+      .eye {
+        @include rounded();
+        position: absolute;
+
+        &.eye-white {
+          @include eye(40px, 40px, white);
+          left: 20px;
+          top: 20px;
+        }
+
+        &.eye-black {
+          @include eye(20px, 20px, black);
+          top: 10px;
+        }
+      }
+    }
+
+    &.body2 {
+      @include position(50px, 60px);
+      background-color: $color-blue400;
+    }
+
+    &.body3 {
+      @include position(90px, 100px);
+      background-color: $color-blue300;
+    }
+
+    &.body4 {
+      @include position(140px, 120px);
+      background-color: $color-blue200;
+    }
+    &.body5 {
+      @include position(180px, 180px);
+      background-color: $color-blue100;
+      z-index: 10;
+    }
+  }
+
+  .grass {
+    position: absolute;
+    top: 260px;
+    left: 0;
+  }
+}
+
+$color-pink: pink;
+$color-yellow: yellow;
+$color-green: green;
+
+@mixin circle($color) {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-color: $color;
+}
+
+@mixin animation-rotate($name, $size) {
+  @keyframes #{$name} {
+    0% {
+      top: 0;
+      left: 0;
+    }
+
+    25% {
+      top: 0;
+      left: $size;
+    }
+
+    50% {
+      top: $size;
+      left: $size;
+    }
+
+    75% {
+      top: $size;
+      left: 0;
+    }
+
+    100% {
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+.circles {
+  .circle {
+    position: relative;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+
+    &.pink {
+      @include circle($color-pink);
+      @include animation-rotate(pinkAnim, 100px);
+      animation-name: pinkAnim;
+    }
+
+    &.yellow {
+      @include circle($color-yellow);
+      @include animation-rotate(yellowAnim, 200px);
+      animation-name: yellowAnim;
+    }
+
+    &.green {
+      @include circle($color-green);
+      @include animation-rotate(greenAnim, 300px);
+      animation-name: greenAnim;
+    }
+  }
+}
