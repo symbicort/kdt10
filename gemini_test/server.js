@@ -257,4 +257,4 @@ async function runChat(msg) {
   console.log(response.text());
 }
 
-runChat('너가 누구야?');
+runChat('조 섬에서 동료를 만난거야?');
